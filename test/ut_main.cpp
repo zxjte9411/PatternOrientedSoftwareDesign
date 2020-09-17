@@ -1,4 +1,7 @@
 #include <gtest/gtest.h>
+#include "ut_ellipse.h"
+#include "ut_triangle.h"
+#include "ut_rectangle.h"
 
 int main(int argc, char ** argv)
 {
