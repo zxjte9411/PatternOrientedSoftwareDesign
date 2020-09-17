@@ -1,3 +1,10 @@
+#include "./shape.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+
+using namespace std;
+#ifndef Ellipse
 class Ellipse: public Shape{
 public: 
     Ellipse(double semiMajorAxes, double semiMinorAxes) {
@@ -13,8 +20,9 @@ public:
         // return the perimeter of the Ellipse.
     }
     
-    std::string info() const {
+    string info() const {
         // return the info of the Ellipse.
         // ex. Ellipse (3.712, 4.000)
     }
 };
+#endif

@@ -1,3 +1,11 @@
+#include "./shape.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+
+using namespace std;
+
+#ifndef Rectangle
 class Rectangle: public Shape {
 public: 
     Rectangle(double length, double width) {
@@ -13,8 +21,10 @@ public:
         // return the perimeter of the Rectangle.
     }
     
-    std::string info() const {
+    string info() const {
+        return "Rectangle (3.712, 4.000)";
         // return the info of the Rectangle.
         // ex. Rectangle (3.712, 4.000)
     }
 };
+#endif
