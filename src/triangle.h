@@ -1,5 +1,5 @@
 #include "./shape.h"
-#include "./two_dimensional_vector.h"
+#include "./two_dimensional_coordinate.h"
 #include <stdlib.h>
 #include <vector>
 #include <string>
