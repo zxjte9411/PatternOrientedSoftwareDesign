@@ -51,7 +51,7 @@ TEST(Ellipse, testGetArea) {
     ellipse = Ellipse(5.123, 4.789);
     ASSERT_NEAR(77.075, ellipse.area(), ABS_ERROR);
     ellipse = Ellipse(888, 111);
-    ASSERT_NEAR(309660.243, ellipse.area(), ABS_ERROR);
+    ASSERT_NEAR(309660.504, ellipse.area(), ABS_ERROR);
 }
 
 TEST(Ellipse, testGetPerimeter) {
@@ -60,5 +60,5 @@ TEST(Ellipse, testGetPerimeter) {
     ellipse = Ellipse(5.123, 4.789);
     ASSERT_NEAR(31.426, ellipse.perimeter(), ABS_ERROR);
     ellipse = Ellipse(888, 111);
-    ASSERT_NEAR(3805.432, ellipse.perimeter(), ABS_ERROR);    
+    ASSERT_NEAR(3805.433, ellipse.perimeter(), ABS_ERROR);    
 }

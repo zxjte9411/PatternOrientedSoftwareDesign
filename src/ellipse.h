@@ -6,7 +6,6 @@
 
 #ifndef ELLIPSE
 #define ELLIPSE
-#define PI 3.14159
 
 class Ellipse: public Shape{
 private:
@@ -29,13 +28,13 @@ public:
     
     double area() const {
         // return the area of the Ellipse.
-        double answer = floor(PI * _semiMajorAxes * _semiMinorAxes * 1000) / 1000;
+        double answer = floor(M_PI * _semiMajorAxes * _semiMinorAxes * 1000) / 1000;
         return answer;
     }
     
     double perimeter() const {
         // return the perimeter of the Ellipse.
-        double answer = floor((2 * PI * _semiMinorAxes + 4 *(_semiMajorAxes-_semiMinorAxes)) * 1000) / 1000;
+        double answer = floor((2 * M_PI * _semiMinorAxes + 4 *(_semiMajorAxes-_semiMinorAxes)) * 1000) / 1000;
         return answer;
     }
     
@@ -43,8 +42,8 @@ public:
         // return the info of the Ellipse.
         // ex. Ellipse (3.712, 4.000)
         char buffer[50];
-        double newSemiMajorAxes = round(_semiMajorAxes * 1000 - 0.5) / 1000;
-        double newSemiMinorAxes = round(_semiMinorAxes * 1000 - 0.5) / 1000;
+        double newSemiMajorAxes = floor(_semiMajorAxes * 1000) / 1000;
+        double newSemiMinorAxes = floor(_semiMinorAxes * 1000) / 1000;
         sprintf(buffer, "Ellipse (%.3f, %.3f)", newSemiMajorAxes, newSemiMinorAxes);
         return buffer;
     }
