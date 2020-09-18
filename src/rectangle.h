@@ -1,9 +1,7 @@
-#include "./shape.h"
-#include <stdlib.h>
 #include <stdio.h>
 #include <string>
 
-using namespace std;
+#include "shape.h"
 
 #ifndef RECTANGLE
 #define RECTANGLE

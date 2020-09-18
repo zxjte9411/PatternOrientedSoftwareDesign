@@ -1,16 +1,15 @@
-#include "./shape.h"
-#include "./two_dimensional_coordinate.h"
-#include <stdlib.h>
+#include <stdio.h>
 #include <vector>
 #include <string>
 
-using namespace std;
+#include "shape.h"
+#include "two_dimensional_coordinate.h"
 
 #ifndef TRIANGLE
 #define TRIANGLE
 class Triangle: public Shape {
 public: 
-    Triangle(vector<TwoDimensionalCoordinate*> vectors) {
+    Triangle(std::vector<TwoDimensionalCoordinate*> vectors) {
         // If the triangle can't be successfully created,
         // handle the exception by throwing string "This is not a triangle!"
     }
@@ -23,7 +22,7 @@ public:
         // return the perimeter of the Triangle.
     }
     
-    string info() const {
+    std::string info() const {
         // return the info of the Triangle.
         // ex. Triangle ([0.000, 0.000], [0.000, -3.141], [-4.000, 0.000])
     }

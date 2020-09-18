@@ -2,7 +2,6 @@
 #include "ut_ellipse.h"
 #include "ut_triangle.h"
 #include "ut_rectangle.h"
-#include "../src/two_dimensional_coordinate.h"
 
 int main(int argc, char ** argv)
 {

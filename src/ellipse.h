@@ -1,9 +1,8 @@
-#include "./shape.h"
-#include <stdlib.h>
 #include <stdio.h>
 #include <string>
 
-using namespace std;
+#include "shape.h"
+
 #ifndef ELLIPSE
 #define ELLIPSE
 class Ellipse: public Shape{
@@ -21,7 +20,7 @@ public:
         // return the perimeter of the Ellipse.
     }
     
-    string info() const {
+    std::string info() const {
         // return the info of the Ellipse.
         // ex. Ellipse (3.712, 4.000)
     }
