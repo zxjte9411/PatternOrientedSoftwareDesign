@@ -32,16 +32,6 @@ TEST(Ellipse, testCreateEllipse){
         ASSERT_EQ("This is not a ellipse!", e);
     }
 
-        try
-    {
-        Ellipse ellipse(1.132, 80.21);
-        FAIL();
-    }
-    catch(std::string e)
-    {
-        ASSERT_EQ("This is not a ellipse!", e);
-    }
-
     ASSERT_NO_THROW(Ellipse(90.50, 40.9));
 }
 

@@ -14,12 +14,10 @@ private:
 
 public: 
     Ellipse(double semiMajorAxes, double semiMinorAxes) {
-        if (semiMajorAxes > 0 && semiMinorAxes > 0) {
-            if (semiMajorAxes > semiMinorAxes) {
-                _semiMajorAxes = semiMajorAxes;
-                _semiMinorAxes = semiMinorAxes;
-                return;
-            }
+        if (semiMajorAxes > 0 && semiMinorAxes > 0 ) {
+            _semiMajorAxes = semiMajorAxes;
+            _semiMinorAxes = semiMinorAxes;
+            return;
         }
         throw std::string("This is not a ellipse!");
         // If the ellipse can't be successfully created,
