@@ -1,5 +1,6 @@
 
-#ifndef TwoDimensionalCoordinate
+#ifndef TWODIMENSIONALCOORDINATE
+#define TWODIMENSIONALCOORDINATE
 class TwoDimensionalCoordinate {
 private:
 	double _x, _y;

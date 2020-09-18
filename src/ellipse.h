@@ -4,7 +4,8 @@
 #include <string>
 
 using namespace std;
-#ifndef Ellipse
+#ifndef ELLIPSE
+#define ELLIPSE
 class Ellipse: public Shape{
 public: 
     Ellipse(double semiMajorAxes, double semiMinorAxes) {

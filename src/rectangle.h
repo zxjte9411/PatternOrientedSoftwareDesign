@@ -5,7 +5,8 @@
 
 using namespace std;
 
-#ifndef Rectangle
+#ifndef RECTANGLE
+#define RECTANGLE
 class Rectangle: public Shape {
 private:
     double _length, _width;

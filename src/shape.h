@@ -2,7 +2,8 @@
 
 using namespace std;
 
-#ifndef Shape
+#ifndef SHAPE
+#define SHAPE
 class Shape {
 public:
     virtual double area() const = 0;

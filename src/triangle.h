@@ -6,7 +6,8 @@
 
 using namespace std;
 
-#ifndef Triangle
+#ifndef TRIANGLE
+#define TRIANGLE
 class Triangle: public Shape {
 public: 
     Triangle(vector<TwoDimensionalCoordinate*> vectors) {
