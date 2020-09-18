@@ -26,20 +26,19 @@ public:
     
     double area() const {
         // return the area of the Rectangle.
-        double answer = _length * _width * 1000;
-        answer -= 0.5;
-        return round(answer) / 1000;
+        double answer = floor(_length * _width * 1000) / 1000;
+        return answer;
     }
     
     double perimeter() const {
         // return the perimeter of the Rectangle.
-        return _length + _length + _width + _width;
+        return (_length + _width) * 2;
     }
     
     std::string info() const {
         char buffer[50];
-        double newLength = round(_length * 1000 - 0.5) / 1000;
-        double newWidth = round(_width * 1000 - 0.5) / 1000;
+        double newLength = floor(_length * 1000) / 1000;
+        double newWidth = floor(_width * 1000) / 1000;
         sprintf(buffer, "Rectangle (%.3f, %.3f)", newLength, newWidth);
         return buffer;
         // return the info of the Rectangle.
