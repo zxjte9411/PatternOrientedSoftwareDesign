@@ -35,7 +35,7 @@ TEST_F(EllipseTesting, testCreateEllipse){
     }
     catch(std::string e)
     {
-        ASSERT_EQ("This is not a ellipse!", e);
+        ASSERT_EQ("This is not an ellipse!", e);
     }
 
     try
@@ -45,7 +45,7 @@ TEST_F(EllipseTesting, testCreateEllipse){
     }
     catch(std::string e)
     {
-        ASSERT_EQ("This is not a ellipse!", e);
+        ASSERT_EQ("This is not an ellipse!", e);
     }
 
     try
@@ -55,7 +55,7 @@ TEST_F(EllipseTesting, testCreateEllipse){
     }
     catch(std::string e)
     {
-        ASSERT_EQ("This is not a ellipse!", e);
+        ASSERT_EQ("This is not an ellipse!", e);
     }
 
     ASSERT_NO_THROW(Ellipse(90.50, 40.9));
