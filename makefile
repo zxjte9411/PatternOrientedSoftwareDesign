@@ -1,8 +1,8 @@
 .PHONY: dirs clean
 
-SRC = src/rectangle.h src/triangle.h src/ellipse.h src/two_dimensional_coordinate.h
+SRC = src/rectangle.h src/triangle.h src/ellipse.h src/two_dimensional_coordinate.h src/sort.h
 
-TEST = test/ut_rectangle.h test/ut_triangle.h test/ut_ellipse.h
+TEST = test/ut_rectangle.h test/ut_triangle.h test/ut_ellipse.h test/ut_sort.h
 
 all : dirs ut_main
 
