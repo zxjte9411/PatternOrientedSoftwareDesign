@@ -25,13 +25,15 @@ protected:
     }
 
     void TearDown() override {
-        for (int i = 0; i < shapes.size(); i++) 
-            delete shapes[i];
-        for (int i = 0; i < twoDimensionalCoordinats.size(); i++) 
-            delete twoDimensionalCoordinats[i];
+        for (auto p : shapes) 
+            delete p;
+        for (auto p: twoDimensionalCoordinats) 
+            delete p;
+        shapes.clear();
+        twoDimensionalCoordinats.clear();
     }
     std::vector<Shape *> shapes;
-    std::vector<TwoDimensionalCoordinate*> twoDimensionalCoordinats;
+    std::vector<TwoDimensionalCoordinate *> twoDimensionalCoordinats;
 };
 
 /*
@@ -43,9 +45,9 @@ area
 6
 62.831
 */
-#include <algorithm>
+// #include <algorithm>
 TEST_F(SortTesting, testAreaAscendingCompare) {
-    std::sort(shapes.begin(), shapes.end(), areaAscendingCompare);
+    quickSort(shapes.begin(), shapes.end(), areaAscendingCompare);
     EXPECT_EQ(1, shapes[0]->area());
     EXPECT_EQ(4, shapes[1]->area());
     EXPECT_EQ(6, shapes[2]->area());
@@ -55,7 +57,7 @@ TEST_F(SortTesting, testAreaAscendingCompare) {
 }
 
 TEST_F(SortTesting, testAreaDescendingCompare) {
-    std::sort(shapes.begin(), shapes.end(), areaDescendingCompare);
+    quickSort(shapes.begin(), shapes.end(), areaDescendingCompare);
     EXPECT_EQ(1, shapes[5]->area());
     EXPECT_EQ(4, shapes[4]->area());
     EXPECT_EQ(6, shapes[3]->area());
@@ -74,7 +76,7 @@ perimeter
 29.132
 */
 TEST_F(SortTesting, testPerimeterAscendingCompare) {
-    std::sort(shapes.begin(), shapes.end(), perimeterAscendingCompare);
+    quickSort(shapes.begin(), shapes.end(), perimeterAscendingCompare);
     EXPECT_EQ(4, shapes[0]->perimeter());
     EXPECT_EQ(8, shapes[1]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
@@ -84,7 +86,7 @@ TEST_F(SortTesting, testPerimeterAscendingCompare) {
 }
 
 TEST_F(SortTesting, testPerimeterDescendingCompare) {
-    std::sort(shapes.begin(), shapes.end(), perimeterDescendingCompare);
+    quickSort(shapes.begin(), shapes.end(), perimeterDescendingCompare);
     EXPECT_EQ(4, shapes[5]->perimeter());
     EXPECT_EQ(8, shapes[4]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());
@@ -96,7 +98,7 @@ TEST_F(SortTesting, testPerimeterDescendingCompare) {
 /*AscendingCompare & DescendingCompare Testing ↓*/
 
 TEST_F(SortTesting, testAscendingCompareUseArea) {
-    std::sort(shapes.begin(), shapes.end(), AscendingCompare("area"));
+    quickSort(shapes.begin(), shapes.end(), AscendingCompare("area"));
     EXPECT_EQ(1, shapes[0]->area());
     EXPECT_EQ(4, shapes[1]->area());
     EXPECT_EQ(6, shapes[2]->area());
@@ -106,7 +108,7 @@ TEST_F(SortTesting, testAscendingCompareUseArea) {
 }
 
 TEST_F(SortTesting, testAscendingCompareUsePerimeter) {
-    std::sort(shapes.begin(), shapes.end(), AscendingCompare("perimeter"));
+    quickSort(shapes.begin(), shapes.end(), AscendingCompare("perimeter"));
     EXPECT_EQ(4, shapes[0]->perimeter());
     EXPECT_EQ(8, shapes[1]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
@@ -116,7 +118,7 @@ TEST_F(SortTesting, testAscendingCompareUsePerimeter) {
 }
 
 TEST_F(SortTesting, testDescendingCompareUseArea) {
-    std::sort(shapes.begin(), shapes.end(), DescendingCompare("area"));
+    quickSort(shapes.begin(), shapes.end(), DescendingCompare("area"));
     EXPECT_EQ(4, shapes[5]->perimeter());
     EXPECT_EQ(8, shapes[4]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());
@@ -126,7 +128,7 @@ TEST_F(SortTesting, testDescendingCompareUseArea) {
 }
 
 TEST_F(SortTesting, testDescendingCompareUsePerimeter) {
-    std::sort(shapes.begin(), shapes.end(), DescendingCompare("perimeter"));
+    quickSort(shapes.begin(), shapes.end(), DescendingCompare("perimeter"));
     EXPECT_EQ(4, shapes[5]->perimeter());
     EXPECT_EQ(8, shapes[4]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());

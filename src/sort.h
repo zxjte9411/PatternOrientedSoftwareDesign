@@ -24,7 +24,30 @@ bool perimeterDescendingCompare(Shape *a, Shape *b) {
 
 template <class RandomAccessIterator, class Compare>
 void quickSort(RandomAccessIterator first, RandomAccessIterator last, Compare comp) {
+    size_t flag = std::distance(first, last);
+    if (flag <= 1)
+        return;
 
+    RandomAccessIterator pivot = last;
+
+    pivot--;
+
+    RandomAccessIterator left  = first;
+    RandomAccessIterator right = pivot;
+    while (left != right) {
+        while (!comp(*pivot, *left)  && left != right)
+            left++;
+        while (!comp(*right, *pivot) && left != right)
+            right--;
+        if (left != right)
+            std::iter_swap(left, right);
+    }
+
+    if (pivot != left && comp(*pivot, *left))
+        std::iter_swap(pivot, left);
+
+    quickSort(first,  left, comp);
+    quickSort(++left, last, comp);
 }
 
 class AscendingCompare {
