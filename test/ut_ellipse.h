@@ -4,17 +4,33 @@
 
 #define ABS_ERROR 0.001
 
-TEST(Ellipse, getInfo){
-    Ellipse ellipse = Ellipse(5.0, 1.0);
-    ASSERT_EQ("Ellipse (5.000, 1.000)", ellipse.info());
-    ellipse = Ellipse(5.3215, 4.123);
-    ASSERT_EQ("Ellipse (5.321, 4.123)", ellipse.info());
+class EllipseTesting : public ::testing::Test {
+protected :
+    Ellipse * ellipse;
+
+    void SetUp() override {
+        ellipse = new Ellipse(5.0, 1.0);
+    }
+
+    void TearDown() override {
+        delete ellipse;
+    }
+
+};
+
+TEST_F(EllipseTesting, getInfo){
+    delete ellipse;
+    ellipse = new Ellipse(5.0, 1.0);
+    ASSERT_EQ("Ellipse (5.000, 1.000)", ellipse->info());
+    ellipse = new Ellipse(5.3215, 4.123);
+    ASSERT_EQ("Ellipse (5.321, 4.123)", ellipse->info());
 }
 
-TEST(Ellipse, testCreateEllipse){
+TEST_F(EllipseTesting, testCreateEllipse){
     try
     {
-        Ellipse ellipse(0, 1.0);
+        delete ellipse;
+        ellipse = new Ellipse(0, 1.0);
         FAIL();
     }
     catch(std::string e)
@@ -24,7 +40,8 @@ TEST(Ellipse, testCreateEllipse){
 
     try
     {
-        Ellipse ellipse(-1.54, 1.0);
+        delete ellipse;
+        ellipse = new Ellipse(-1.54, 1.0);
         FAIL();
     }
     catch(std::string e)
@@ -35,20 +52,26 @@ TEST(Ellipse, testCreateEllipse){
     ASSERT_NO_THROW(Ellipse(90.50, 40.9));
 }
 
-TEST(Ellipse, testGetArea) {
-    Ellipse ellipse = Ellipse(5.0, 4.0);
-    ASSERT_NEAR(62.831, ellipse.area(), ABS_ERROR);
-    ellipse = Ellipse(5.123, 4.789);
-    ASSERT_NEAR(77.075, ellipse.area(), ABS_ERROR);
-    ellipse = Ellipse(888, 111);
-    ASSERT_NEAR(309660.504, ellipse.area(), ABS_ERROR);
+TEST_F(EllipseTesting, testGetArea) {
+    delete ellipse;
+    ellipse = new Ellipse(5.0, 4.0);
+    ASSERT_NEAR(62.831, ellipse->area(), ABS_ERROR);
+    delete ellipse;
+    ellipse = new Ellipse(5.123, 4.789);
+    ASSERT_NEAR(77.075, ellipse->area(), ABS_ERROR);
+    delete ellipse;
+    ellipse = new Ellipse(888, 111);
+    ASSERT_NEAR(309660.504, ellipse->area(), ABS_ERROR);
 }
 
-TEST(Ellipse, testGetPerimeter) {
-    Ellipse ellipse = Ellipse(5.0, 4.0);
-    ASSERT_NEAR(29.132, ellipse.perimeter(), ABS_ERROR);
-    ellipse = Ellipse(5.123, 4.789);
-    ASSERT_NEAR(31.426, ellipse.perimeter(), ABS_ERROR);
-    ellipse = Ellipse(888, 111);
-    ASSERT_NEAR(3805.433, ellipse.perimeter(), ABS_ERROR);
+TEST_F(EllipseTesting, testGetPerimeter) {
+    delete ellipse;
+    ellipse = new Ellipse(5.0, 4.0);
+    ASSERT_NEAR(29.132, ellipse->perimeter(), ABS_ERROR);
+    delete ellipse;
+    ellipse = new Ellipse(5.123, 4.789);
+    ASSERT_NEAR(31.426, ellipse->perimeter(), ABS_ERROR);
+    delete ellipse;
+    ellipse = new Ellipse(888, 111);
+    ASSERT_NEAR(3805.433, ellipse->perimeter(), ABS_ERROR);
 }
