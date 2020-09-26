@@ -6,22 +6,23 @@
 
 class EllipseTesting : public ::testing::Test {
 protected :
-    Ellipse * ellipse;
 
     void SetUp() override {
-        ellipse = new Ellipse(5.0, 1.0);
+        ellipse = new Ellipse(7.0, 6.0);
     }
 
     void TearDown() override {
         delete ellipse;
     }
 
+    Ellipse * ellipse;
 };
 
 TEST_F(EllipseTesting, getInfo){
     delete ellipse;
     ellipse = new Ellipse(5.0, 1.0);
     ASSERT_EQ("Ellipse (5.000, 1.000)", ellipse->info());
+    delete ellipse;
     ellipse = new Ellipse(5.3215, 4.123);
     ASSERT_EQ("Ellipse (5.321, 4.123)", ellipse->info());
 }
@@ -29,8 +30,7 @@ TEST_F(EllipseTesting, getInfo){
 TEST_F(EllipseTesting, testCreateEllipse){
     try
     {
-        delete ellipse;
-        ellipse = new Ellipse(0, 1.0);
+        Ellipse ellipse(0, 1.0);
         FAIL();
     }
     catch(std::string e)
@@ -40,8 +40,7 @@ TEST_F(EllipseTesting, testCreateEllipse){
 
     try
     {
-        delete ellipse;
-        ellipse = new Ellipse(-1.54, 1.0);
+        Ellipse ellipse(-1.54, 1.0);
         FAIL();
     }
     catch(std::string e)
