@@ -21,9 +21,9 @@ public:
                 return;
             }
         }
-        throw std::string("This is not a ellipse!");
+        throw std::string("This is not an ellipse!");
         // If the ellipse can't be successfully created,
-        // handle the exception by throwing string "This is not a ellipse!"
+        // handle the exception by throwing string "This is not an ellipse!"
     }
     
     double area() const {
