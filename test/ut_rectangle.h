@@ -19,6 +19,7 @@ TEST_F(RectangleTesting, getInfo){
     delete rectangle;
     rectangle = new Rectangle(1.0, 1.0);
     ASSERT_EQ("Rectangle (1.000, 1.000)", rectangle->info());
+    delete rectangle;
     rectangle = new Rectangle(4.123, 5.3215);
     ASSERT_EQ("Rectangle (4.123, 5.321)", rectangle->info());
 }

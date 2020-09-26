@@ -8,7 +8,6 @@
 class TriangleTesting : public ::testing::Test {
 protected:
     void SetUp() override {
-        std::vector<TwoDimensionalCoordinate*> triangleVector;
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
@@ -16,10 +15,14 @@ protected:
     }
 
     void TearDown() override {
+        for (auto p: triangleVector)
+            delete p;
+        triangleVector.clear();
         delete triangle;
     }
 
     Triangle * triangle;
+    std::vector<TwoDimensionalCoordinate*> triangleVector;
 };
 
 TEST_F(TriangleTesting, getInfo){
@@ -37,12 +40,14 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     }
     catch(std::string e)
     {
+        for (auto p: triangleVector)
+            delete p;
+        triangleVector.clear();
         ASSERT_EQ("This is not a triangle!", e);
     }
 
     try
     {
-        triangleVector.clear();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 1));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 2));
@@ -51,6 +56,9 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     }
     catch(std::string e)
     {
+        for (auto p: triangleVector)
+            delete p;
+        triangleVector.clear();        
         ASSERT_EQ("This is not a triangle!", e);
     }
 
@@ -65,15 +73,18 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     }
     catch(std::string e)
     {
+        for (auto p: triangleVector)
+            delete p;
         ASSERT_EQ("This is not a triangle!", e);
     }
-    
     triangleVector.clear();
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 3));
     triangleVector.push_back(new TwoDimensionalCoordinate(4, 0));
     ASSERT_NO_THROW(Triangle triangle(triangleVector));
-
+    for (auto p: triangleVector)
+        delete p;
+    triangleVector.clear();
 }
 
 TEST_F(TriangleTesting, testGetArea) {
