@@ -3,7 +3,7 @@
 #ifndef SORT
 #define SORT
 
-class sort {
+class Sort {
 public:
     bool areaAscendingCompare(Shape *a, Shape *b) {
         return false;
