@@ -5,19 +5,32 @@
 
 #define ABS_ERROR 0.001
 
-TEST(Triangle, getInfo){
-    std::vector<TwoDimensionalCoordinate*> triangleVector;
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-    Triangle triangle = Triangle(triangleVector);
-    ASSERT_EQ("Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])", triangle.info());
+class TriangleTesting : public ::testing::Test {
+protected:
+    void SetUp() override {
+        std::vector<TwoDimensionalCoordinate*> triangleVector;
+        triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
+        triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
+        triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
+        triangle = new Triangle(triangleVector);
+    }
+
+    void TearDown() override {
+        delete triangle;
+    }
+
+    Triangle * triangle;
+};
+
+TEST_F(TriangleTesting, getInfo){
+    ASSERT_EQ("Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])", triangle->info());
 }
 
-TEST(Triangle, testCreateTriangle) {
+TEST_F(TriangleTesting, testCreateTriangle) {
+    std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
     try
     {
-        std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
+        triangleVector.clear();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         Triangle triangle = Triangle(triangleVector);
         FAIL();
@@ -29,7 +42,7 @@ TEST(Triangle, testCreateTriangle) {
 
     try
     {
-        std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
+        triangleVector.clear();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 1));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 2));
@@ -43,7 +56,7 @@ TEST(Triangle, testCreateTriangle) {
 
     try
     {
-        std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
+        triangleVector.clear();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(2, 2));
         triangleVector.push_back(new TwoDimensionalCoordinate(2, 2));
@@ -54,7 +67,8 @@ TEST(Triangle, testCreateTriangle) {
     {
         ASSERT_EQ("This is not a triangle!", e);
     }
-    std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
+    
+    triangleVector.clear();
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 3));
     triangleVector.push_back(new TwoDimensionalCoordinate(4, 0));
@@ -62,20 +76,10 @@ TEST(Triangle, testCreateTriangle) {
 
 }
 
-TEST(Triangle, testGetArea) {
-    std::vector<TwoDimensionalCoordinate*> triangleVector;
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-    Triangle triangle = Triangle(triangleVector);
-    ASSERT_NEAR(6.000, triangle.area(), ABS_ERROR);
+TEST_F(TriangleTesting, testGetArea) {
+    ASSERT_NEAR(6.000, triangle->area(), ABS_ERROR);
 }
 
-TEST(Triangle, testGetPerimeter) {
-    std::vector<TwoDimensionalCoordinate*> triangleVector;
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
-    triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-    Triangle triangle = Triangle(triangleVector);
-    ASSERT_NEAR(12.000, triangle.perimeter(), ABS_ERROR);
+TEST_F(TriangleTesting, testGetPerimeter) {
+    ASSERT_NEAR(12.000, triangle->perimeter(), ABS_ERROR);
 }
