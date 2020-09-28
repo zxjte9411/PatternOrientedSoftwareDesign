@@ -63,5 +63,11 @@ public:
         // return the info of the Triangle.
         // ex. Triangle ([0.000, 0.000], [0.000, -3.141], [-4.000, 0.000])
     }
+
+    ~Triangle() {
+        for (auto p: _vectors)
+            delete p;
+        _vectors.clear();
+    }
 };
 #endif

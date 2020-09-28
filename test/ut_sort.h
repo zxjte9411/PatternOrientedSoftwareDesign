@@ -27,8 +27,7 @@ protected:
     void TearDown() override {
         for (auto p : shapes) 
             delete p;
-        for (auto p: twoDimensionalCoordinats) 
-            delete p;
+        
         shapes.clear();
         twoDimensionalCoordinats.clear();
     }

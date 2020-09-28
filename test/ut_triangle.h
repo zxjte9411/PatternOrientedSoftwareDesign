@@ -15,9 +15,6 @@ protected:
     }
 
     void TearDown() override {
-        for (auto p: triangleVector)
-            delete p;
-        triangleVector.clear();
         delete triangle;
     }
 
@@ -33,7 +30,6 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     std::vector<TwoDimensionalCoordinate*> triangleVector = std::vector<TwoDimensionalCoordinate*>();
     try
     {
-        triangleVector.clear();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         Triangle triangle = Triangle(triangleVector);
         FAIL();
@@ -82,9 +78,6 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 3));
     triangleVector.push_back(new TwoDimensionalCoordinate(4, 0));
     ASSERT_NO_THROW(Triangle triangle(triangleVector));
-    for (auto p: triangleVector)
-        delete p;
-    triangleVector.clear();
 }
 
 TEST_F(TriangleTesting, testGetArea) {
