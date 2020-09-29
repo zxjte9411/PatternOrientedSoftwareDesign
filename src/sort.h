@@ -28,23 +28,23 @@ void quickSort(RandomAccessIterator first, RandomAccessIterator last, Compare co
     if (flag <= 1)
         return;
 
-    RandomAccessIterator pivot = last;
+    RandomAccessIterator p = last;
 
-    pivot--;
+    p--;
 
     RandomAccessIterator left  = first;
-    RandomAccessIterator right = pivot;
+    RandomAccessIterator right = p;
     while (left != right) {
-        while (!comp(*pivot, *left)  && left != right)
+        while (!comp(*p, *left)  && left != right)
             left++;
-        while (!comp(*right, *pivot) && left != right)
+        while (!comp(*right, *p) && left != right)
             right--;
         if (left != right)
             std::iter_swap(left, right);
     }
 
-    if (pivot != left && comp(*pivot, *left))
-        std::iter_swap(pivot, left);
+    if (p != left && comp(*p, *left))
+        std::iter_swap(p, left);
 
     quickSort(first,  left, comp);
     quickSort(++left, last, comp);
