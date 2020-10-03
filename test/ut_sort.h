@@ -135,3 +135,44 @@ TEST_F(SortTesting, testDescendingCompareUsePerimeter) {
     EXPECT_EQ(16, shapes[1]->perimeter());
     EXPECT_EQ(29.132, shapes[0]->perimeter());
 }
+
+// test for lambda function
+
+TEST_F(SortTesting, testAreaAscendingCompareUseLambdaFunction) {
+    quickSort(shapes.begin(), shapes.end(), [](Shape * a, Shape * b){return a->area()<b->area();});
+    EXPECT_EQ(1, shapes[0]->area());
+    EXPECT_EQ(4, shapes[1]->area());
+    EXPECT_EQ(6, shapes[2]->area());
+    EXPECT_EQ(9, shapes[3]->area());
+    EXPECT_EQ(16, shapes[4]->area());
+    EXPECT_EQ(62.831, shapes[5]->area());
+}
+
+TEST_F(SortTesting, testAreaDescendingCompareUseLambdaFunction) {
+    quickSort(shapes.begin(), shapes.end(), [](Shape * a, Shape * b){return a->area()>b->area();});
+    EXPECT_EQ(1, shapes[5]->area());
+    EXPECT_EQ(4, shapes[4]->area());
+    EXPECT_EQ(6, shapes[3]->area());
+    EXPECT_EQ(9, shapes[2]->area());
+    EXPECT_EQ(16, shapes[1]->area());
+    EXPECT_EQ(62.831, shapes[0]->area());
+}
+TEST_F(SortTesting, testPerimeterAscendingCompareUseLambdaFunction) {
+    quickSort(shapes.begin(), shapes.end(), [](Shape * a, Shape * b){return a->perimeter()<b->perimeter();});
+    EXPECT_EQ(4, shapes[0]->perimeter());
+    EXPECT_EQ(8, shapes[1]->perimeter());
+    EXPECT_EQ(12, shapes[2]->perimeter());
+    EXPECT_EQ(12, shapes[3]->perimeter());
+    EXPECT_EQ(16, shapes[4]->perimeter());
+    EXPECT_EQ(29.132, shapes[5]->perimeter());
+}
+
+TEST_F(SortTesting, testPerimeterDescendingCompareUseLambdaFunction) {
+    quickSort(shapes.begin(), shapes.end(), [](Shape * a, Shape * b){return a->perimeter()>b->perimeter();});
+    EXPECT_EQ(4, shapes[5]->perimeter());
+    EXPECT_EQ(8, shapes[4]->perimeter());
+    EXPECT_EQ(12, shapes[3]->perimeter());
+    EXPECT_EQ(12, shapes[2]->perimeter());
+    EXPECT_EQ(16, shapes[1]->perimeter());
+    EXPECT_EQ(29.132, shapes[0]->perimeter());
+}
