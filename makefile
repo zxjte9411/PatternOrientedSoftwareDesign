@@ -9,7 +9,7 @@ all : dirs ut_main geo
 ut_main: test/ut_main.cpp $(SRC) $(TEST)
 	g++ -std=c++11 test/ut_main.cpp -o bin/ut_main -lgtest -lpthread
 
-geo: src/main.cpp $(SRC) $(TEST)
+geo: src/main.cpp $(SRC)
 	g++ -std=c++11 src/main.cpp -o bin/geo
 
 dirs:
