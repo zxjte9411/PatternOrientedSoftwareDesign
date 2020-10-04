@@ -26,7 +26,7 @@ public:
     
     double area() const {
         // return the area of the Rectangle.
-        double answer = floor(_length * _width * 1000) / 1000;
+        double answer = _length * _width;
         return answer;
     }
     

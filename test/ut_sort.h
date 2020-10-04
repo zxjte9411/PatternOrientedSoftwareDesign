@@ -52,7 +52,7 @@ TEST_F(SortTesting, testAreaAscendingCompare) {
     EXPECT_EQ(6, shapes[2]->area());
     EXPECT_EQ(9, shapes[3]->area());
     EXPECT_EQ(16, shapes[4]->area());
-    EXPECT_EQ(62.831, shapes[5]->area());
+    ASSERT_NEAR(62.832, shapes[5]->area(), 0.001);
 }
 
 TEST_F(SortTesting, testAreaDescendingCompare) {
@@ -62,7 +62,7 @@ TEST_F(SortTesting, testAreaDescendingCompare) {
     EXPECT_EQ(6, shapes[3]->area());
     EXPECT_EQ(9, shapes[2]->area());
     EXPECT_EQ(16, shapes[1]->area());
-    EXPECT_EQ(62.831, shapes[0]->area());
+    ASSERT_NEAR(62.832, shapes[0]->area(), 0.001);
 }
 
 /*
@@ -81,7 +81,7 @@ TEST_F(SortTesting, testPerimeterAscendingCompare) {
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(16, shapes[4]->perimeter());
-    EXPECT_EQ(29.132, shapes[5]->perimeter());
+    ASSERT_NEAR(29.132, shapes[5]->perimeter(), 0.001);
 }
 
 TEST_F(SortTesting, testPerimeterDescendingCompare) {
@@ -91,7 +91,7 @@ TEST_F(SortTesting, testPerimeterDescendingCompare) {
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(16, shapes[1]->perimeter());
-    EXPECT_EQ(29.132, shapes[0]->perimeter());
+    ASSERT_NEAR(29.132, shapes[0]->perimeter(), 0.001);
 }
 
 /*AscendingCompare & DescendingCompare Testing ↓*/
@@ -103,7 +103,7 @@ TEST_F(SortTesting, testAscendingCompareUseArea) {
     EXPECT_EQ(6, shapes[2]->area());
     EXPECT_EQ(9, shapes[3]->area());
     EXPECT_EQ(16, shapes[4]->area());
-    EXPECT_EQ(62.831, shapes[5]->area());
+    ASSERT_NEAR(62.832, shapes[5]->area(), 0.001);
 }
 
 TEST_F(SortTesting, testAscendingCompareUsePerimeter) {
@@ -113,7 +113,7 @@ TEST_F(SortTesting, testAscendingCompareUsePerimeter) {
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(16, shapes[4]->perimeter());
-    EXPECT_EQ(29.132, shapes[5]->perimeter());
+    ASSERT_NEAR(29.132, shapes[5]->perimeter(), 0.001);
 }
 
 TEST_F(SortTesting, testDescendingCompareUseArea) {
@@ -123,7 +123,7 @@ TEST_F(SortTesting, testDescendingCompareUseArea) {
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(16, shapes[1]->perimeter());
-    EXPECT_EQ(29.132, shapes[0]->perimeter());
+    ASSERT_NEAR(29.132, shapes[0]->perimeter(), 0.001);
 }
 
 TEST_F(SortTesting, testDescendingCompareUsePerimeter) {
@@ -133,7 +133,7 @@ TEST_F(SortTesting, testDescendingCompareUsePerimeter) {
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(16, shapes[1]->perimeter());
-    EXPECT_EQ(29.132, shapes[0]->perimeter());
+    ASSERT_NEAR(29.132, shapes[0]->perimeter(), 0.001);
 }
 
 // test for lambda function
@@ -145,7 +145,7 @@ TEST_F(SortTesting, testAreaAscendingCompareUseLambdaFunction) {
     EXPECT_EQ(6, shapes[2]->area());
     EXPECT_EQ(9, shapes[3]->area());
     EXPECT_EQ(16, shapes[4]->area());
-    EXPECT_EQ(62.831, shapes[5]->area());
+    ASSERT_NEAR(62.832, shapes[5]->area(), 0.001);
 }
 
 TEST_F(SortTesting, testAreaDescendingCompareUseLambdaFunction) {
@@ -155,7 +155,7 @@ TEST_F(SortTesting, testAreaDescendingCompareUseLambdaFunction) {
     EXPECT_EQ(6, shapes[3]->area());
     EXPECT_EQ(9, shapes[2]->area());
     EXPECT_EQ(16, shapes[1]->area());
-    EXPECT_EQ(62.831, shapes[0]->area());
+    ASSERT_NEAR(62.832, shapes[0]->area(), 0.001);
 }
 TEST_F(SortTesting, testPerimeterAscendingCompareUseLambdaFunction) {
     quickSort(shapes.begin(), shapes.end(), [](Shape * a, Shape * b){return a->perimeter()<b->perimeter();});
@@ -164,7 +164,7 @@ TEST_F(SortTesting, testPerimeterAscendingCompareUseLambdaFunction) {
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(16, shapes[4]->perimeter());
-    EXPECT_EQ(29.132, shapes[5]->perimeter());
+    ASSERT_NEAR(29.132, shapes[5]->perimeter(), 0.001);
 }
 
 TEST_F(SortTesting, testPerimeterDescendingCompareUseLambdaFunction) {
@@ -174,5 +174,5 @@ TEST_F(SortTesting, testPerimeterDescendingCompareUseLambdaFunction) {
     EXPECT_EQ(12, shapes[3]->perimeter());
     EXPECT_EQ(12, shapes[2]->perimeter());
     EXPECT_EQ(16, shapes[1]->perimeter());
-    EXPECT_EQ(29.132, shapes[0]->perimeter());
+    ASSERT_NEAR(29.132, shapes[0]->perimeter(), 0.001);
 }

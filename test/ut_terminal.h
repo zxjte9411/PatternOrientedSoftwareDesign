@@ -70,7 +70,7 @@ TEST_F(TerminnalTesting, createValidTerminal) {
 }
 
 TEST_F(TerminnalTesting, showResult) {
-    ASSERT_EQ("6.000\n15.540\n62.831", terminal->showResult());
+    ASSERT_EQ("6.000\n15.540\n62.832", terminal->showResult());
 }
 
 TEST_F(TerminnalTesting, sortTarget) {
@@ -82,21 +82,25 @@ TEST_F(TerminnalTesting, sortWay) {
 }
 
 TEST_F(TerminnalTesting, sortAreaByInc) {
-    ASSERT_EQ("6.000\n15.540\n62.831", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) area inc").showResult());
+    ASSERT_EQ("6.000\n15.540\n62.832", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) area inc").showResult());
 }
 
 TEST_F(TerminnalTesting, sortAreaByDec) {
-    ASSERT_EQ("62.831\n15.540\n6.000", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) area dec").showResult());
+    ASSERT_EQ("62.832\n15.540\n6.000", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) area dec").showResult());
 }
 
 TEST_F(TerminnalTesting, sortPerimeterByInc) {
-    ASSERT_EQ("12.000\n15.800\n29.132", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) perimeter inc").showResult());
+    ASSERT_EQ("12.000\n15.800\n29.133", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) perimeter inc").showResult());
 }
 
 TEST_F(TerminnalTesting, sortPerimeterByDec) {
-    ASSERT_EQ("29.132\n15.800\n12.000", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) perimeter dec").showResult());
+    ASSERT_EQ("29.133\n15.800\n12.000", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([0,0], [3,0], [0,4]) perimeter dec").showResult());
 }
 
 TEST_F(TerminnalTesting, sortPerimeterByDecWithOneErrorShape) {
-    ASSERT_EQ("29.132\n15.800", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([3,0], [0,4]) perimeter dec").showResult());
+    ASSERT_EQ("29.133\n15.800", Terminal("Rectangle (3.7, 4.2) Ellipse (5, 4) Triangle ([3,0], [0,4]) perimeter dec").showResult());
+}
+
+TEST_F(TerminnalTesting, sortPerimeterByIncSpec) {
+    ASSERT_EQ("12.000\n15.800\n22.850", Terminal("Rectangle (3.7, 4.2) Ellipse (4, 3) Triangle ([0,0], [3,0], [0,4]) perimeter inc").showResult());
 }

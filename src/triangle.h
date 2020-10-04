@@ -46,13 +46,13 @@ public:
     
     double area() const {
         double s = (_sideA + _sideB + _sideC) / 2.0;
-        double answer = floor(sqrt(s * (s-_sideA) * (s-_sideB) * (s-_sideC)) * 1000) / 1000;
+        double answer = sqrt(s * (s-_sideA) * (s-_sideB) * (s-_sideC));
         return answer;
         // return the area of the Triangle.
     }
     
     double perimeter() const {
-        return floor((_sideA + _sideB + _sideC) * 1000) / 1000;
+        return _sideA + _sideB + _sideC;
         // return the perimeter of the Triangle.
     }    
 

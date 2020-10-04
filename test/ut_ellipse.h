@@ -83,4 +83,7 @@ TEST_F(EllipseTesting, testGetPerimeter) {
     delete ellipse;
     ellipse = new Ellipse(888, 111);
     ASSERT_NEAR(3805.433, ellipse->perimeter(), ABS_ERROR);
+    delete ellipse;
+    ellipse = new Ellipse(4, 3);
+    ASSERT_NEAR(22.849, ellipse->perimeter(), ABS_ERROR);
 }

@@ -28,13 +28,13 @@ public:
     
     double area() const {
         // return the area of the Ellipse.
-        double answer = floor(M_PI * _semiMajorAxes * _semiMinorAxes * 1000) / 1000;
+        double answer = M_PI * _semiMajorAxes * _semiMinorAxes;
         return answer;
     }
     
     double perimeter() const {
         // return the perimeter of the Ellipse.
-        double answer = floor((2 * M_PI * _semiMinorAxes + 4 *(_semiMajorAxes-_semiMinorAxes)) * 1000) / 1000;
+        double answer = 2 * M_PI * _semiMinorAxes + 4 * (_semiMajorAxes-_semiMinorAxes);
         return answer;
     }
     
