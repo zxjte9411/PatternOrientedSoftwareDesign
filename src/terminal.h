@@ -37,9 +37,9 @@ public:
         for (auto shape: _shapes) {
             char buffer[50];
             if (_sortFeature == "area")
-                sprintf(buffer, "%.3f", floor(shape->area() * 1000) / 1000);
+                sprintf(buffer, "%.3f", shape->area());
             else if (_sortFeature == "perimeter")
-                sprintf(buffer, "%.3f", floor(shape->perimeter() * 1000) / 1000);
+                sprintf(buffer, "%.3f", shape->perimeter());
             std::string str(buffer);
             ss << str;
             if (shape != _shapes.back()) {
