@@ -11,7 +11,8 @@
 #include <sstream>
 #include <vector>
 
-std::string const regString = "^((Rectangle +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Ellipse +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Triangle +\\((\\[\\-?[0-9] *\\, *\\-?[0-9]\\] *\\,? *)*\\) +))+((area)|(perimeter)) +((inc)|(dec))";
+// std::string const regString = "^((Rectangle +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Ellipse +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Triangle +\\((\\[\\-?[0-9] *\\, *\\-?[0-9]\\] *\\,? *)*\\) +))+((area)|(perimeter)) +((inc)|(dec))";
+std::string const regString = "^((Rectangle +\\(.*\\) +)|(Ellipse +\\(.*\\) +)|(Triangle +\\(.*\\) +))+((area)|(perimeter)) +((inc)|(dec))";
 std::string const regRectangle = "Rectangle +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +";
 std::string const regEllipse = "Ellipse +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +";
 std::string const regTriangle = "Triangle +\\((\\[\\-?[0-9] *\\, *\\-?[0-9]\\] *\\,? *){3}\\) +";
@@ -121,14 +122,14 @@ private:
     }
 
     void createTriangle(std::string partString) {
-        std::vector<std::string> fields = handleTriangleString(partString);
-
-        std::vector<TwoDimensionalCoordinate *> pointers;
-        pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[0]), std::stod(fields[1])));
-        pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[2]), std::stod(fields[3])));
-        pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[4]), std::stod(fields[5])));
+        std::vector<std::string> fields;
         try
         {
+            fields = handleTriangleString(partString);
+            std::vector<TwoDimensionalCoordinate *> pointers;
+            pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[0]), std::stod(fields[1])));
+            pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[2]), std::stod(fields[3])));
+            pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[4]), std::stod(fields[5])));
             _shapes.push_back(new Triangle(pointers));
         }
         catch(std::string e) {}
