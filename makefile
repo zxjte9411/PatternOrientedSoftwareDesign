@@ -7,10 +7,10 @@ TEST = test/ut_rectangle.h test/ut_triangle.h test/ut_ellipse.h test/ut_sort.h t
 all : dirs ut_main geo
 
 ut_main: test/ut_main.cpp $(SRC) $(TEST)
-	g++ -std=c++11 -g test/ut_main.cpp -o bin/ut_main -lgtest -lpthread
+	g++ -std=c++11 -Wfatal-errors -Wall -g test/ut_main.cpp -o bin/ut_main -lgtest -lpthread
 
 geo: src/main.cpp $(SRC)
-	g++ -std=c++11 -g src/main.cpp -o bin/geo
+	g++ -std=c++11 -Wfatal-errors -Wall -g src/main.cpp -o bin/geo
 
 dirs:
 	mkdir -p bin
