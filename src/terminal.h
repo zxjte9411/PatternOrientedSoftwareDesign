@@ -11,7 +11,6 @@
 #include <sstream>
 #include <vector>
 
-// std::string const regString = "^((Rectangle +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Ellipse +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +)|(Triangle +\\((\\[\\-?[0-9] *\\, *\\-?[0-9]\\] *\\,? *)*\\) +))+((area)|(perimeter)) +((inc)|(dec))";
 std::string const regString = "^((Rectangle +\\(.*\\) +)|(Ellipse +\\(.*\\) +)|(Triangle +\\(.*\\) +))+((area)|(perimeter)) +((inc)|(dec))";
 std::string const regRectangle = "Rectangle +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +";
 std::string const regEllipse = "Ellipse +\\( *\\-?[0-9]+\\.?[0-9]? *\\, *\\-?[0-9]+\\.?[0-9]? *\\) +";
