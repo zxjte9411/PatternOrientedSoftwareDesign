@@ -66,8 +66,6 @@ TEST_F(CompoundShapeTesting, getPerimeter) {
     ASSERT_NEAR(29.132, cs->perimeter(), 0.001);
 }
     
-
-
 TEST_F(CompoundShapeTesting, getInfo) {
     std::string const answer = "Compound Shape {Rectangle (3.000, 4.000), Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}";
     ASSERT_EQ(answer, compoundShape->info());
