@@ -57,7 +57,16 @@ TEST_F(CompoundShapeTesting, getArea) {
 
 TEST_F(CompoundShapeTesting, getPerimeter) {
     ASSERT_EQ(34.0, compoundShape->perimeter());
+    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    _shapes->push_back(new Ellipse("3", 5.0, 4.0));
+    CompoundShape * cs = new CompoundShape("4", _shapes);
+    cs->addShape(compoundShape);
+    ASSERT_NEAR(63.132, cs->perimeter(), 0.001);
+    cs->deleteShapeById("20201010");
+    ASSERT_NEAR(29.132, cs->perimeter(), 0.001);
 }
+    
+
 
 TEST_F(CompoundShapeTesting, getInfo) {
     std::string const answer = "Compound Shape {Rectangle (3.000, 4.000), Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}";

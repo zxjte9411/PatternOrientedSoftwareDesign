@@ -70,13 +70,13 @@ public:
         for (; sptr<_shapes->end(); sptr++) {
             try
             {
-                if ((*sptr)->color() == "transparent"){
-                    (*sptr)->deleteShapeById(id);
-                    return;
-                }
-                else if (id == (*sptr)->id()) {
+                if (id == (*sptr)->id()){
                     _shapes->erase(sptr);
                     // delete *sptr;
+                    return;
+                }
+                else if ((*sptr)->color() == "transparent") {
+                    (*sptr)->deleteShapeById(id);
                     return;
                 }
             }
