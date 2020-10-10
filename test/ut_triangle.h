@@ -102,7 +102,16 @@ TEST_F(TriangleTesting, constructor) {
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
+    triangle = new Triangle("123654987", triangleVector);
+    ASSERT_EQ("123654987", triangle->id());
+    ASSERT_EQ("white", triangle->color());
+    delete triangle;
+    triangleVector.clear();
+    triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
+    triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
+    triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
     triangle = new Triangle("123654987", "red", triangleVector);
     ASSERT_EQ("123654987", triangle->id());
     ASSERT_EQ("red", triangle->color());
+
 }

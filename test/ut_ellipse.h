@@ -97,10 +97,10 @@ TEST_F(EllipseTesting, testGetColorWhite) {
 }
 
 TEST_F(EllipseTesting, constructor) {
-    Ellipse e("123654987", 4, 3);
-    ASSERT_EQ("123654987", e.id());
-    ASSERT_EQ("white", e.color());
-    Ellipse e("123654987", "red", 4, 3);
-    ASSERT_EQ("123654987", e.id());
-    ASSERT_EQ("red", e.color());
+    Ellipse e1("123654987", 4, 3);
+    ASSERT_EQ("123654987", e1.id());
+    ASSERT_EQ("white", e1.color());
+    Ellipse e2("123654987", "red", 4, 3);
+    ASSERT_EQ("123654987", e2.id());
+    ASSERT_EQ("red", e2.color());
 }
