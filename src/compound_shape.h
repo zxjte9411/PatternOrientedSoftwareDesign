@@ -36,13 +36,19 @@ public:
         return total;
     }
 
-    double perimeter() const { 
+    double perimeter() const {
         std::vector<Shape*>::iterator sptr = _shapes->begin();
         double total = 0.0;
-        for (;sptr<_shapes->end();sptr++) {
-            total += (*sptr)->perimeter();
+        try {            
+            for (;sptr<_shapes->end();sptr++) {
+                total += (*sptr)->perimeter();
+            }
+            // return sum of all containing shapes perimeter.
+        }   
+        catch(std::string e) {
+            std::cout << e << "\n";
         }
-        // return sum of all containing shapes perimeter.
+
         return total;
     }
 
@@ -110,10 +116,11 @@ public:
     }
 
     ~CompoundShape() {
-        // std::vector<Shape*>::iterator ptr = _shapes->begin();
-        // for (;ptr<_shapes->end(); ptr++) 
-        //     delete *ptr;
-        // delete _shapes;
+        std::vector<Shape*>::iterator ptr = _shapes->begin();
+        for (;ptr<_shapes->end(); ptr++) 
+            delete *ptr;
+        _shapes->clear();
+        delete _shapes;
     }
 };
 #endif 
