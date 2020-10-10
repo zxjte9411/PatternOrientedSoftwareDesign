@@ -110,7 +110,7 @@ TEST_F(TriangleTesting, constructor) {
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-    triangle = new Triangle("123654987", "red", triangleVector);
+    triangle = new Triangle("123654987", triangleVector, "red");
     ASSERT_EQ("123654987", triangle->id());
     ASSERT_EQ("red", triangle->color());
 

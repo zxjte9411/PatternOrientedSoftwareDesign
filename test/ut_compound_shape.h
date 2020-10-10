@@ -13,12 +13,12 @@ protected :
 
     void SetUp() override {
         shapes = new std::vector<Shape*>();
-        shapes->push_back(new Rectangle("0", "red", 3, 4));
+        shapes->push_back(new Rectangle("0", 3, 4, "red"));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-        shapes->push_back(new Triangle("1", "blue", triangleVector));
-        shapes->push_back(new Rectangle("2", "red", 2, 2));
+        shapes->push_back(new Triangle("1", triangleVector, "blue"));
+        shapes->push_back(new Rectangle("2", 2, 2, "red"));
         compoundShape = new CompoundShape("20201010", shapes);
     }
     

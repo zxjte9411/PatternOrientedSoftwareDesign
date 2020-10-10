@@ -83,7 +83,7 @@ TEST_F(RectangleTesting, constructor) {
     Rectangle r1("123654987", 4, 3);
     ASSERT_EQ("123654987", r1.id());
     ASSERT_EQ("white", r1.color());
-    Rectangle r2("123654987", "red", 4, 3);
+    Rectangle r2("123654987", 4, 3, "red");
     ASSERT_EQ("123654987", r2.id());
     ASSERT_EQ("red", r2.color());
 }

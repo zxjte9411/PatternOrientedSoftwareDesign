@@ -25,7 +25,7 @@ public:
     Rectangle(std::string id, double length, double width): Shape(id) {
         createChecker(length, width);
     }
-    Rectangle(std::string id, std::string color, double length, double width): Shape(id, color) {
+    Rectangle(std::string id, double length, double width, std::string color): Shape(id, color) {
         createChecker(length, width);
     }
     

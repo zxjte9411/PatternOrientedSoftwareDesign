@@ -26,7 +26,7 @@ public:
     Ellipse(std::string id, double semiMajorAxes, double semiMinorAxes): Shape(id) {
         createChecker(semiMajorAxes, semiMinorAxes);
     }
-    Ellipse(std::string id, std::string color, double semiMajorAxes, double semiMinorAxes): Shape(id, color) {
+    Ellipse(std::string id, double semiMajorAxes, double semiMinorAxes, std::string color): Shape(id, color) {
 
     }
     double area() const {

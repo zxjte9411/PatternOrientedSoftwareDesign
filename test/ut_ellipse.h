@@ -100,7 +100,7 @@ TEST_F(EllipseTesting, constructor) {
     Ellipse e1("123654987", 4, 3);
     ASSERT_EQ("123654987", e1.id());
     ASSERT_EQ("white", e1.color());
-    Ellipse e2("123654987", "red", 4, 3);
+    Ellipse e2("123654987", 4, 3, "red");
     ASSERT_EQ("123654987", e2.id());
     ASSERT_EQ("red", e2.color());
 }

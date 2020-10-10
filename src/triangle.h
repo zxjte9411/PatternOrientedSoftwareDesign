@@ -45,7 +45,7 @@ public:
     Triangle(std::string id, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id) {
         createChecker(vectors);
     }
-    Triangle(std::string id, std::string color, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id, color) {
+    Triangle(std::string id, std::vector<TwoDimensionalCoordinate*> vectors, std::string color): Shape(id, color) {
         createChecker(vectors);
     }
     double area() const {
