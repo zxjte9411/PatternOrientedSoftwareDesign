@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
         {
             ss << std::regex_replace(fileContext, std::regex("[\r\n]"), "") << " ";
         }
-        ss << std::string(argv[4]) << " " << std::string(argv[3]);
+        ss << std::string(argv[3]) << " " << std::string(argv[4]);
         opf << Terminal(ss.str()).showResult();
         ipf.close();
         opf.close();
