@@ -44,15 +44,6 @@ private:
 public: 
     Triangle(std::string id, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id) {
         createChecker(vectors);
-        // if (vectors.size() == 3 && IsTriangle(vectors))
-        // {
-        //     _vectors = vectors;
-        // }
-        // else {
-        //     throw std::string("This is not a triangle!");
-        // }
-        // If the triangle can't be successfully created,
-        // handle the exception by throwing string "This is not a triangle!"
     }
     Triangle(std::string id, std::string color, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id, color) {
         createChecker(vectors);

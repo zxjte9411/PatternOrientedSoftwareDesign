@@ -25,15 +25,6 @@ private:
 public: 
     Ellipse(std::string id, double semiMajorAxes, double semiMinorAxes): Shape(id) {
         createChecker(semiMajorAxes, semiMinorAxes);
-        // if (semiMajorAxes > 0 && semiMinorAxes > 0 ) {
-        //     if (semiMajorAxes >= semiMinorAxes) {
-        //         _semiMajorAxes = semiMajorAxes;
-        //          _semiMinorAxes = semiMinorAxes;
-        //         return;
-        //     }
-        // }
-        // throw std::string("This is not an ellipse!");
-
     }
     Ellipse(std::string id, std::string color, double semiMajorAxes, double semiMinorAxes): Shape(id, color) {
 
