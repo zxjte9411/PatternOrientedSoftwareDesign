@@ -123,4 +123,6 @@ TEST_F(CompoundShapeTesting, deleteById) {
     cs->deleteShapeById("0");
     std::string const answer = "Compound Shape {Ellipse (5.000, 4.000), Compound Shape {Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}}";
     ASSERT_EQ(answer, cs->info());
+    _shapes->clear();
+    delete _shapes;
 }

@@ -110,10 +110,10 @@ public:
     }
 
     ~CompoundShape() {
-        std::vector<Shape*>::iterator ptr = _shapes->begin();
-        for (;ptr<_shapes->end(); ptr++) 
-            delete *ptr;
-        delete _shapes;
+        // std::vector<Shape*>::iterator ptr = _shapes->begin();
+        // for (;ptr<_shapes->end(); ptr++) 
+        //     delete *ptr;
+        // delete _shapes;
     }
 };
 #endif 
