@@ -30,9 +30,7 @@ private:
         std::string str(buffer);
         return str;
     }
-
-public: 
-    Triangle(std::vector<TwoDimensionalCoordinate*> vectors) {
+    void createChecker(std::vector<TwoDimensionalCoordinate*> vectors) {
         if (vectors.size() == 3 && IsTriangle(vectors))
         {
             _vectors = vectors;
@@ -43,7 +41,22 @@ public:
         // If the triangle can't be successfully created,
         // handle the exception by throwing string "This is not a triangle!"
     }
-    
+public: 
+    Triangle(std::string id, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id) {
+        createChecker(vectors);
+        // if (vectors.size() == 3 && IsTriangle(vectors))
+        // {
+        //     _vectors = vectors;
+        // }
+        // else {
+        //     throw std::string("This is not a triangle!");
+        // }
+        // If the triangle can't be successfully created,
+        // handle the exception by throwing string "This is not a triangle!"
+    }
+    Triangle(std::string id, std::string color, std::vector<TwoDimensionalCoordinate*> vectors): Shape(id, color) {
+        createChecker(vectors);
+    }
     double area() const {
         double s = (_sideA + _sideB + _sideC) / 2.0;
         double answer = sqrt(s * (s-_sideA) * (s-_sideB) * (s-_sideC));

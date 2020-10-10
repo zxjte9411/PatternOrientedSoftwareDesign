@@ -1,19 +1,16 @@
+#ifndef ELLIPSE
+#define ELLIPSE
+#include "shape.h"
+
 #include <stdio.h>
 #include <math.h>
 #include <string>
 
-#include "shape.h"
-
-#ifndef ELLIPSE
-#define ELLIPSE
-
-class Ellipse: public Shape{
+class Ellipse: public Shape {
 private:
     double _semiMajorAxes; // 長
     double _semiMinorAxes; // 短
-
-public: 
-    Ellipse(double semiMajorAxes, double semiMinorAxes) {
+    void createChecker(double semiMajorAxes, double semiMinorAxes) {
         if (semiMajorAxes > 0 && semiMinorAxes > 0 ) {
             if (semiMajorAxes >= semiMinorAxes) {
                 _semiMajorAxes = semiMajorAxes;
@@ -25,7 +22,22 @@ public:
         // If the ellipse can't be successfully created,
         // handle the exception by throwing string "This is not an ellipse!"
     }
-    
+public: 
+    Ellipse(std::string id, double semiMajorAxes, double semiMinorAxes): Shape(id) {
+        createChecker(semiMajorAxes, semiMinorAxes);
+        // if (semiMajorAxes > 0 && semiMinorAxes > 0 ) {
+        //     if (semiMajorAxes >= semiMinorAxes) {
+        //         _semiMajorAxes = semiMajorAxes;
+        //          _semiMinorAxes = semiMinorAxes;
+        //         return;
+        //     }
+        // }
+        // throw std::string("This is not an ellipse!");
+
+    }
+    Ellipse(std::string id, std::string color, double semiMajorAxes, double semiMinorAxes): Shape(id, color) {
+
+    }
     double area() const {
         // return the area of the Ellipse.
         double answer = M_PI * _semiMajorAxes * _semiMinorAxes;
@@ -47,5 +59,6 @@ public:
         sprintf(buffer, "Ellipse (%.3f, %.3f)", newSemiMajorAxes, newSemiMinorAxes);
         return buffer;
     }
+    
 };
 #endif

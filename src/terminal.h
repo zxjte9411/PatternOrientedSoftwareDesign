@@ -1,11 +1,11 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
-#include "../src/rectangle.h"
-#include "../src/triangle.h"
-#include "../src/ellipse.h"
-#include "../src/shape.h"
-#include "../src/two_dimensional_coordinate.h"
-#include "../src/sort.h"
+#include "rectangle.h"
+#include "triangle.h"
+#include "ellipse.h"
+#include "shape.h"
+#include "two_dimensional_coordinate.h"
+#include "sort.h"
 #include <string>
 #include <regex>
 #include <sstream>
@@ -104,7 +104,7 @@ private:
         std::vector<std::string> fields = handleString(partString, "Rectangle");
         try
         {
-            _shapes.push_back(new Rectangle(std::stod(fields[0]), std::stod(fields[1])));
+            _shapes.push_back(new Rectangle("20201010", std::stod(fields[0]), std::stod(fields[1])));
         }
         catch(std::string e) {}
         fields.clear();
@@ -114,7 +114,7 @@ private:
         std::vector<std::string> fields = handleString(partString, "Ellipse");
         try
         {
-            _shapes.push_back(new Ellipse(std::stod(fields[0]), std::stod(fields[1])));
+            _shapes.push_back(new Ellipse("20201010", std::stod(fields[0]), std::stod(fields[1])));
         }
         catch(std::string e) {}
         fields.clear();
@@ -129,7 +129,7 @@ private:
             pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[0]), std::stod(fields[1])));
             pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[2]), std::stod(fields[3])));
             pointers.push_back(new TwoDimensionalCoordinate(std::stod(fields[4]), std::stod(fields[5])));
-            _shapes.push_back(new Triangle(pointers));
+            _shapes.push_back(new Triangle("20201010", pointers));
         }
         catch(std::string e) {}
         fields.clear();

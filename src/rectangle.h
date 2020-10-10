@@ -9,9 +9,7 @@
 class Rectangle: public Shape {
 private:
     double _length, _width;
-
-public: 
-    Rectangle(double length, double width) {
+    void createChecker(double length, double width) {
         // If the rectangle can't be successfully created,
         // handle the exception by throwing string "This is not a rectangle!"
         if (length <= 0 || width <= 0) {
@@ -22,6 +20,23 @@ public:
             _length = length;
             _width = width;
         }
+    }
+public: 
+    Rectangle(std::string id, double length, double width): Shape(id) {
+        createChecker(length, width);
+        // If the rectangle can't be successfully created,
+        // handle the exception by throwing string "This is not a rectangle!"
+        // if (length <= 0 || width <= 0) {
+        //     throw std::string("This is not a rectangle!");
+        // }
+        // else
+        // {
+        //     _length = length;
+        //     _width = width;
+        // }
+    }
+    Rectangle(std::string id, std::string color, double length, double width): Shape(id, color) {
+        createChecker(length, width);
     }
     
     double area() const {
