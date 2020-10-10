@@ -37,13 +37,13 @@ public:
     }
 
     double perimeter() const { 
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
-        double total = 0.0;
-        for (;sptr<_shapes->end();sptr++) {
-            total += (*sptr)->perimeter();
-        }
-        // return sum of all containing shapes perimeter.
-        return total;
+        // std::vector<Shape*>::iterator sptr = _shapes->begin();
+        // double total = 0.0;
+        // for (;sptr<_shapes->end();sptr++) {
+        //     total += (*sptr)->perimeter();
+        // }
+        // // return sum of all containing shapes perimeter.
+        return 0.0;
     }
 
     std::string info() const {
