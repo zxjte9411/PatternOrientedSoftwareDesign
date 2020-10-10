@@ -13,15 +13,15 @@ protected:
     void SetUp() override {
         shapes = std::vector<Shape *>();
         twoDimensionalCoordinats = std::vector<TwoDimensionalCoordinate *>();
-        shapes.push_back(new Rectangle(2, 2));
-        shapes.push_back(new Rectangle(4, 4));
-        shapes.push_back(new Rectangle(1, 1));
-        shapes.push_back(new Rectangle(3, 3));
+        shapes.push_back(new Rectangle("20201010", 2, 2));
+        shapes.push_back(new Rectangle("20201010", 4, 4));
+        shapes.push_back(new Rectangle("20201010", 1, 1));
+        shapes.push_back(new Rectangle("20201010", 3, 3));
         twoDimensionalCoordinats.push_back(new TwoDimensionalCoordinate(0, 0));
         twoDimensionalCoordinats.push_back(new TwoDimensionalCoordinate(3, 0));
         twoDimensionalCoordinats.push_back(new TwoDimensionalCoordinate(0, 4));
-        shapes.push_back(new Triangle(twoDimensionalCoordinats));
-        shapes.push_back(new Ellipse(5.0, 4.0));
+        shapes.push_back(new Triangle("20201010", twoDimensionalCoordinats));
+        shapes.push_back(new Ellipse("20201010", 5.0, 4.0));
     }
 
     void TearDown() override {

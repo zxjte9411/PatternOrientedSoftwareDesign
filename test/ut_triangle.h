@@ -11,7 +11,7 @@ protected:
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-        triangle = new Triangle(triangleVector);
+        triangle = new Triangle("20201010", triangleVector);
     }
 
     void TearDown() override {
@@ -31,7 +31,7 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     try
     {
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
-        Triangle triangle = Triangle(triangleVector);
+        Triangle triangle = Triangle("20201010", triangleVector);
         FAIL();
     }
     catch(std::string e)
@@ -47,7 +47,7 @@ TEST_F(TriangleTesting, testCreateTriangle) {
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 1));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 2));
-        Triangle triangle = Triangle(triangleVector);
+        Triangle triangle = Triangle("20201010", triangleVector);
         FAIL();
     }
     catch(std::string e)
@@ -64,7 +64,7 @@ TEST_F(TriangleTesting, testCreateTriangle) {
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(2, 2));
         triangleVector.push_back(new TwoDimensionalCoordinate(2, 2));
-        Triangle triangle = Triangle(triangleVector);
+        Triangle triangle = Triangle("20201010", triangleVector);
         FAIL();
     }
     catch(std::string e)
@@ -77,7 +77,7 @@ TEST_F(TriangleTesting, testCreateTriangle) {
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
     triangleVector.push_back(new TwoDimensionalCoordinate(0, 3));
     triangleVector.push_back(new TwoDimensionalCoordinate(4, 0));
-    ASSERT_NO_THROW(Triangle triangle(triangleVector));
+    ASSERT_NO_THROW(Triangle triangle("20201010", triangleVector));
 }
 
 TEST_F(TriangleTesting, testGetArea) {
@@ -86,4 +86,23 @@ TEST_F(TriangleTesting, testGetArea) {
 
 TEST_F(TriangleTesting, testGetPerimeter) {
     ASSERT_NEAR(12.000, triangle->perimeter(), ABS_ERROR);
+}
+
+TEST_F(TriangleTesting, testGetId) {
+    ASSERT_EQ("20201010", triangle->id());
+}
+
+TEST_F(TriangleTesting, testGetColorWhite) {
+    ASSERT_EQ("white", triangle->color());
+}
+
+TEST_F(TriangleTesting, constructor) {
+    delete triangle;
+    triangleVector.clear();
+    triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
+    triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
+    triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
+    triangle = new Triangle("123654987", "red", triangleVector);
+    ASSERT_EQ("123654987", triangle->id());
+    ASSERT_EQ("red", triangle->color());
 }
