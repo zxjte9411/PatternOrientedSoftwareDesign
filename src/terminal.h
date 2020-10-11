@@ -34,17 +34,17 @@ public:
             quickSort(_shapes.begin(), _shapes.end(), AscendingCompare(_sortFeature));
         else if (_sortWay == "dec")
             quickSort(_shapes.begin(), _shapes.end(), DescendingCompare(_sortFeature));
-        for (auto shape: _shapes) {
+        for (std::vector<Shape*>::iterator shape = _shapes.begin();shape<_shapes.end();shape++) {
             char buffer[50];
             if (_sortFeature == "area")
-                sprintf(buffer, "%.3f", shape->area());
+                sprintf(buffer, "%.3f", (*shape)->area());
             else if (_sortFeature == "perimeter")
-                sprintf(buffer, "%.3f", shape->perimeter());
+                sprintf(buffer, "%.3f", (*shape)->perimeter());
             std::string str(buffer);
             ss << str;
-            if (shape != _shapes.back()) {
+            if (std::distance(shape, _shapes.end()) != 1) {
                 ss << "\n";
-            }                
+            }
         }
         return ss.str();
     }
@@ -58,8 +58,8 @@ public:
     }
 
     ~Terminal() {
-        for (auto p: _shapes)
-            delete p;
+        for (std::vector<Shape*>::iterator p = _shapes.begin(); p<_shapes.end(); p++)
+            delete *p;
         _shapes.clear();
     }
 private:
@@ -165,11 +165,10 @@ private:
             temp.push_back(pch);
             pch = std::strtok(NULL, "_");
         }
-        
-        for (auto t: temp) {
+        for (std::vector<std::string>::iterator t = temp.begin();t<temp.end();t++) {
             delete [] char_array;
-            char_array = new char[t.length() + 1];
-            std::strcpy(char_array, t.c_str());
+            char_array = new char[t->length() + 1];
+            std::strcpy(char_array, t->c_str());
             pch = std::strtok(char_array, ",");
             while (pch != NULL)
             {

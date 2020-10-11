@@ -69,8 +69,8 @@ public:
     }
 
     ~Triangle() {
-        for (auto p: _vectors)
-            delete p;
+        for (std::vector<TwoDimensionalCoordinate*>::iterator p=_vectors.begin(); p<_vectors.end(); p++)
+            delete *p;
         _vectors.clear();
     }
 };
