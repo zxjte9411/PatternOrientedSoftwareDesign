@@ -8,7 +8,7 @@ class CompoundShape : public Shape {
 private:
     std::vector<Shape*> * _shapes;
     void createChecker(std::vector<Shape*>* shapes) {
-        if (shapes->size() < 1) {
+        if (shapes->empty()) {
             throw std::string("This is not a compound shape!");
         }
     }
@@ -71,7 +71,7 @@ public:
             try
             {
                 if (id == (*sptr)->id()){
-                    _shapes->erase(sptr);
+                    sptr = _shapes->erase(sptr);
                     return;
                 }
                 else if ((*sptr)->color() == "transparent") {
@@ -92,11 +92,11 @@ public:
         for (; sptr<_shapes->end(); sptr++) {
             try
             {
-                if ((*sptr)->color() == "transparent"){
-                    return (*sptr)->getShapeById(id);
-                }
-                else if (id == (*sptr)->id()) {
+                if (id == (*sptr)->id()){
                     return *sptr;
+                }
+                else if ((*sptr)->color() == "transparent") {
+                    return (*sptr)->getShapeById(id);
                 }
             }
             catch(std::string e){} //先接起來等到真的都沒有，回圈結束後就會擲出例外
@@ -109,11 +109,11 @@ public:
     }
 
     ~CompoundShape() {
-        // std::vector<Shape*>::iterator ptr = _shapes->begin();
-        // for (;ptr<_shapes->end(); ptr++) 
-        //     delete *ptr;
-        // _shapes->clear();
-        // delete _shapes;
+        std::vector<Shape*>::iterator ptr = _shapes->begin();
+        for (;ptr<_shapes->end(); ptr++) 
+            delete *ptr;
+        _shapes->clear();
+        delete _shapes;
     }
 };
 #endif 

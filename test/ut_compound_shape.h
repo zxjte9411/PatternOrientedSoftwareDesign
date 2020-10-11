@@ -23,7 +23,10 @@ protected :
     }
     
     void TearDown() override {
-        delete compoundShape;
+        if (compoundShape != nullptr) {
+            delete compoundShape;
+            compoundShape = nullptr;
+        }
         delete shapes;
     }
 
@@ -65,7 +68,7 @@ TEST_F(CompoundShapeTesting, getPerimeter) {
     cs->deleteShapeById("20201010");
     ASSERT_NEAR(29.132, cs->perimeter(), 0.001);
 }
-    
+
 TEST_F(CompoundShapeTesting, getInfo) {
     std::string const answer = "Compound Shape {Rectangle (3.000, 4.000), Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}";
     ASSERT_EQ(answer, compoundShape->info());
@@ -121,6 +124,5 @@ TEST_F(CompoundShapeTesting, deleteById) {
     cs->deleteShapeById("0");
     std::string const answer = "Compound Shape {Ellipse (5.000, 4.000), Compound Shape {Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}}";
     ASSERT_EQ(answer, cs->info());
-    _shapes->clear();
-    delete _shapes;
+    ASSERT_TRUE(cs->getShapeById("20201010") == compoundShape);
 }
