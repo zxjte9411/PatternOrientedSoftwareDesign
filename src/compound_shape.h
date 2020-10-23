@@ -3,21 +3,22 @@
 #include "../src/shape.h"
 #include <vector>
 #include <sstream>
+#include <list>
 
 class CompoundShape : public Shape {
 private:
-    std::vector<Shape*> * _shapes;
-    void createChecker(std::vector<Shape*>* shapes) {
+    std::list<Shape*> * _shapes;
+    void createChecker(std::list<Shape*>* shapes) {
         if (shapes->empty()) {
             throw std::string("This is not a compound shape!");
         }
     }
 public:
-    CompoundShape(std::string id, std::vector<Shape*>* shapes): Shape(id, "transparent") {
+    CompoundShape(std::string id, std::list<Shape*>* shapes): Shape(id, "transparent") {
         createChecker(shapes);
-        _shapes = new std::vector<Shape*>();
-        std::vector<Shape*>::iterator sptr = shapes->begin();
-        for (;sptr<shapes->end();sptr++)
+        _shapes = new std::list<Shape*>();
+        std::list<Shape*>::iterator sptr = shapes->begin();
+        for (;sptr!=shapes->end();sptr++)
             _shapes->push_back(*sptr);
         // The default color of compound shape should be "transparent".
         // When there's no shape contain in the compound shape,
@@ -27,9 +28,9 @@ public:
     }
 
     double area() const {
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
+        std::list<Shape*>::iterator sptr = _shapes->begin();
         double total = 0.0;
-        for (;sptr<_shapes->end();sptr++) {
+        for (;sptr!=_shapes->end();sptr++) {
             total += (*sptr)->area();
         }
         // return sum of all containing shapes area.
@@ -37,9 +38,9 @@ public:
     }
 
     double perimeter() const {
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
+        std::list<Shape*>::iterator sptr = _shapes->begin();
         double total = 0.0;
-        for (;sptr<_shapes->end();sptr++) {
+        for (;sptr!=_shapes->end();sptr++) {
             total += (*sptr)->perimeter();
         }
         // return sum of all containing shapes perimeter.
@@ -49,9 +50,9 @@ public:
     std::string info() const {
         // return list of all containing shapes info with wrapped of "CompoundShape {}".
         // ex."Compound Shape {Ellipse (4.000, 3.000), Rectangle (3.000, 4.000), Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])}"
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
+        std::list<Shape*>::iterator sptr = _shapes->begin();
         std::string result = "Compound Shape {";
-        for (;sptr<_shapes->end();sptr++) {
+        for (;sptr!=_shapes->end();sptr++) {
             if (std::distance(sptr, _shapes->end()) == 1)
                 result += (*sptr)->info() + "}";
             else
@@ -66,8 +67,8 @@ public:
     }
     
     void deleteShapeById(std::string id) {
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
-        for (; sptr<_shapes->end(); sptr++) {
+        std::list<Shape*>::iterator sptr = _shapes->begin();
+        for (; sptr!=_shapes->end(); sptr++) {
             try
             {
                 if (id == (*sptr)->id()){
@@ -88,8 +89,8 @@ public:
     }
     
     Shape* getShapeById(std::string id) {
-        std::vector<Shape*>::iterator sptr = _shapes->begin();
-        for (; sptr<_shapes->end(); sptr++) {
+        std::list<Shape*>::iterator sptr = _shapes->begin();
+        for (; sptr!=_shapes->end(); sptr++) {
             try
             {
                 if (id == (*sptr)->id()){
@@ -108,9 +109,13 @@ public:
         // return nullptr;
     }
 
+    std::string type() const {
+        return "Compound Shape";
+    }
+
     ~CompoundShape() {
-        std::vector<Shape*>::iterator ptr = _shapes->begin();
-        for (;ptr<_shapes->end(); ptr++) 
+        std::list<Shape*>::iterator ptr = _shapes->begin();
+        for (;ptr!=_shapes->end(); ptr++) 
             delete *ptr;
         _shapes->clear();
         delete _shapes;

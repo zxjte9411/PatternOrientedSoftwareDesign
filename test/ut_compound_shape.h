@@ -7,12 +7,13 @@
 #include "../src/sort.h"
 #include <gtest/gtest.h>
 #include <vector>
+#include <list>
 
 class CompoundShapeTesting : public ::testing::Test {
 protected :
 
     void SetUp() override {
-        shapes = new std::vector<Shape*>();
+        shapes = new std::list<Shape*>();
         shapes->push_back(new Rectangle("0", 3, 4, "red"));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
@@ -31,7 +32,7 @@ protected :
     }
 
     CompoundShape * compoundShape;
-    std::vector<Shape*> * shapes;
+    std::list<Shape*> * shapes;
     std::vector<TwoDimensionalCoordinate*> triangleVector;
 
 };
@@ -41,7 +42,7 @@ TEST_F(CompoundShapeTesting, createCompoundShape) {
     ASSERT_EQ("transparent", compoundShape->color());
     ASSERT_EQ("20201010", compoundShape->id());
     //-----------------------------------------------
-    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    std::list<Shape*> * _shapes = new std::list<Shape*>();
     try
     {
         CompoundShape compoundShape("99", _shapes);
@@ -60,7 +61,7 @@ TEST_F(CompoundShapeTesting, getArea) {
 
 TEST_F(CompoundShapeTesting, getPerimeter) {
     ASSERT_EQ(34.0, compoundShape->perimeter());
-    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    std::list<Shape*> * _shapes = new std::list<Shape*>();
     _shapes->push_back(new Ellipse("3", 5.0, 4.0));
     CompoundShape * cs = new CompoundShape("4", _shapes);
     cs->addShape(compoundShape);
@@ -75,7 +76,7 @@ TEST_F(CompoundShapeTesting, getInfo) {
 }
 
 TEST_F(CompoundShapeTesting, addShape) {
-    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    std::list<Shape*> * _shapes = new std::list<Shape*>();
     _shapes->push_back(new Ellipse("3", 5.0, 4.0));
     CompoundShape * cs = new CompoundShape("4", _shapes);
     compoundShape->addShape(cs);
@@ -84,7 +85,7 @@ TEST_F(CompoundShapeTesting, addShape) {
 }
 
 TEST_F(CompoundShapeTesting, getShapeById) {
-    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    std::list<Shape*> * _shapes = new std::list<Shape*>();
     _shapes->push_back(new Ellipse("3", 5.0, 4.0));
     CompoundShape * cs = new CompoundShape("4", _shapes);
     cs->addShape(compoundShape);
@@ -117,7 +118,7 @@ TEST_F(CompoundShapeTesting, getShapeById) {
 }
 
 TEST_F(CompoundShapeTesting, deleteById) {
-    std::vector<Shape*> * _shapes = new std::vector<Shape*>();
+    std::list<Shape*> * _shapes = new std::list<Shape*>();
     _shapes->push_back(new Ellipse("3", 5.0, 4.0));
     CompoundShape * cs = new CompoundShape("4", _shapes);
     cs->addShape(compoundShape);
