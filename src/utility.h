@@ -10,6 +10,7 @@
 
 #include <string>
 #include <deque>
+#include <algorithm>
 
 Shape* getShapeById(Shape* shape, std::string id) {
     Iterator * shapeIterator = shape->createIterator();
@@ -30,6 +31,12 @@ Shape* getShapeById(Shape* shape, std::string id) {
     // throw std::string "Only compound shape can get shape!" when the input shape is not iterable.
     // throw std::string "Expected get shape but shape not found" when no shape found with the given id.
 }
+void merge(std::deque<Shape*> *dq1, std::deque<Shape*> dq2) {
+    std::deque<Shape*>::iterator it = dq2.begin();
+    for (;it!=dq2.end();it++) {
+        dq1->push_back(*it);
+    }
+}
 
 template <class Filter>
 std::deque<Shape*> filterShape(Shape* shape, Filter filter) {
@@ -38,9 +45,16 @@ std::deque<Shape*> filterShape(Shape* shape, Filter filter) {
         throw std::string("Only compound shape can filter shape!");
     }
     std::deque<Shape*> shapes = std::deque<Shape*>();
+    std::deque<Shape*> subShapes = std::deque<Shape*>();
+    
     for (;!shapeIterator->isDone(); shapeIterator->next()) {
-        if (filter(shapeIterator->currentItem()))
+        
+        if (filter(shapeIterator->currentItem())) {
             shapes.push_back(shapeIterator->currentItem());
+        }
+        if (!shapeIterator->currentItem()->createIterator()->isDone()) {
+            merge(&shapes, filterShape(shapeIterator->currentItem(), filter));
+        }
     }
     return shapes;
     // access the shape with iterator pattern.

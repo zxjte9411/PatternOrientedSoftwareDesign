@@ -100,36 +100,46 @@ id:2 type: Triangle         color: blue         a = 6       p = 12
 id:3 type: Ellipse          color: red          a = 37.700  p = 22.849
 id:4 type: Rectangle        color: red          a = 9       p = 12
 */
+
 TEST_F(UtilityTesting, areaFilter) {
     std::deque<Shape*> shapesInDeque = filterShape(compoundShape_0, AreaFilter(15, 5));
-    ASSERT_EQ(2, shapesInDeque.size());
+    ASSERT_EQ(3, shapesInDeque.size());
     ASSERT_EQ("1", shapesInDeque[0]->id());
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
-    ASSERT_EQ("4", shapesInDeque[1]->id());
-    ASSERT_EQ("Rectangle", shapesInDeque[1]->type());
+    ASSERT_EQ("2", shapesInDeque[1]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[1]->type());
+    ASSERT_EQ("4", shapesInDeque[2]->id());
+    ASSERT_EQ("Rectangle", shapesInDeque[2]->type());
     shapesInDeque.clear();
+
     shapesInDeque = filterShape(compoundShape_0, AreaFilter(40, 20));
     ASSERT_EQ(1, shapesInDeque.size());
     ASSERT_EQ("3", shapesInDeque[0]->id());
     ASSERT_EQ("Ellipse", shapesInDeque[0]->type());
     shapesInDeque.clear();
     shapesInDeque = filterShape(compoundShape_0, AreaFilter(40, 1));
-    ASSERT_EQ(3, shapesInDeque.size());
+    ASSERT_EQ(4, shapesInDeque.size());
     ASSERT_EQ("1", shapesInDeque[0]->id());
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
-    ASSERT_EQ("3", shapesInDeque[1]->id());
-    ASSERT_EQ("Ellipse", shapesInDeque[1]->type());
-    ASSERT_EQ("4", shapesInDeque[2]->id());
-    ASSERT_EQ("Rectangle", shapesInDeque[2]->type());
+    ASSERT_EQ("2", shapesInDeque[1]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[1]->type());
+    ASSERT_EQ("3", shapesInDeque[2]->id());
+    ASSERT_EQ("Ellipse", shapesInDeque[2]->type());
+    ASSERT_EQ("4", shapesInDeque[3]->id());
+    ASSERT_EQ("Rectangle", shapesInDeque[3]->type());
+
 }
+
 
 TEST_F(UtilityTesting, perimeterFilter) {
     std::deque<Shape*> shapesInDeque = filterShape(compoundShape_0, PerimeterFilter(15, 5));
-    ASSERT_EQ(2, shapesInDeque.size());
+    ASSERT_EQ(3, shapesInDeque.size());
     ASSERT_EQ("1", shapesInDeque[0]->id());
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
-    ASSERT_EQ("4", shapesInDeque[1]->id());
-    ASSERT_EQ("Rectangle", shapesInDeque[1]->type());
+    ASSERT_EQ("2", shapesInDeque[1]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[1]->type());
+    ASSERT_EQ("4", shapesInDeque[2]->id());
+    ASSERT_EQ("Rectangle", shapesInDeque[2]->type());
     shapesInDeque.clear();
     shapesInDeque = filterShape(compoundShape_0, PerimeterFilter(30, 20));
     ASSERT_EQ(1, shapesInDeque.size());
@@ -137,13 +147,15 @@ TEST_F(UtilityTesting, perimeterFilter) {
     ASSERT_EQ("Ellipse", shapesInDeque[0]->type());
     shapesInDeque.clear();
     shapesInDeque = filterShape(compoundShape_0, PerimeterFilter(30, 1));
-    ASSERT_EQ(3, shapesInDeque.size());
+    ASSERT_EQ(4, shapesInDeque.size());
     ASSERT_EQ("1", shapesInDeque[0]->id());
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
-    ASSERT_EQ("3", shapesInDeque[1]->id());
-    ASSERT_EQ("Ellipse", shapesInDeque[1]->type());
-    ASSERT_EQ("4", shapesInDeque[2]->id());
-    ASSERT_EQ("Rectangle", shapesInDeque[2]->type());
+    ASSERT_EQ("2", shapesInDeque[1]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[1]->type());
+    ASSERT_EQ("3", shapesInDeque[2]->id());
+    ASSERT_EQ("Ellipse", shapesInDeque[2]->type());
+    ASSERT_EQ("4", shapesInDeque[3]->id());
+    ASSERT_EQ("Rectangle", shapesInDeque[3]->type());
 }
 
 TEST_F(UtilityTesting, typeFilter) {
@@ -153,7 +165,9 @@ TEST_F(UtilityTesting, typeFilter) {
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
     shapesInDeque.clear();
     shapesInDeque = filterShape(compoundShape_0, TypeFilter("Triangle"));
-    ASSERT_EQ(0, shapesInDeque.size());
+    ASSERT_EQ(1, shapesInDeque.size());
+    ASSERT_EQ("2", shapesInDeque[0]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[0]->type());
     shapesInDeque = filterShape(compoundShape_0, TypeFilter("Rectangle"));
     ASSERT_EQ(1, shapesInDeque.size());
     ASSERT_EQ("4", shapesInDeque[0]->id());
@@ -172,7 +186,9 @@ TEST_F(UtilityTesting, colorFilter) {
     ASSERT_EQ("Compound Shape", shapesInDeque[0]->type());
     shapesInDeque.clear();
     shapesInDeque = filterShape(compoundShape_0, ColorFilter("blue"));
-    ASSERT_EQ(0, shapesInDeque.size());
+    ASSERT_EQ(1, shapesInDeque.size());
+    ASSERT_EQ("2", shapesInDeque[0]->id());
+    ASSERT_EQ("Triangle", shapesInDeque[0]->type());
     shapesInDeque = filterShape(compoundShape_0, ColorFilter("red"));
     ASSERT_EQ(2, shapesInDeque.size());
     ASSERT_EQ("4", shapesInDeque[1]->id());
