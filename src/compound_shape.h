@@ -95,16 +95,14 @@ public:
     }
     
     Shape* getShapeById(std::string id) {
-        std::list<Shape*>::iterator sptr = _shapes->begin();
-        for (; sptr!=_shapes->end(); sptr++) {
+        Iterator * it = createIterator();
+        for (; !it->isDone(); it->next()) {
             try
             {
-                if (id == (*sptr)->id()){
-                    return *sptr;
+                if (id == it->currentItem()->id()){
+                    return it->currentItem();
                 }
-                else if ((*sptr)->color() == "transparent") {
-                    return (*sptr)->getShapeById(id);
-                }
+                return it->currentItem()->getShapeById(id);
             }
             catch(std::string e){} //先接起來等到真的都沒有，回圈結束後就會擲出例外
         }
@@ -112,7 +110,6 @@ public:
         // search and return a shape through id,
         // search all the containing shapes and the tree structure below,
         // if no match of id, throw std::string "Expected get shape but shape not found"
-        // return nullptr;
     }
 
     std::string type() const {
