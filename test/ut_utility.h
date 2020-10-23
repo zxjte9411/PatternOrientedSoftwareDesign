@@ -12,16 +12,16 @@
 class UtilityTesting : public ::testing::Test {
 protected:
     void SetUp() override {
-        shapes = new std::list<Shape*>();
+        shapes = std::list<Shape*>();
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(3, 0));
         triangleVector.push_back(new TwoDimensionalCoordinate(0, 4));
-        shapes->push_back(new Triangle("2", triangleVector, "blue"));
+        shapes.push_back(new Triangle("2", triangleVector, "blue"));
         compoundShape_1 = new CompoundShape("1", shapes);
-        shapes->clear();
-        shapes->push_back(compoundShape_1);
-        shapes->push_back(new Ellipse("3", 4, 3, "red"));
-        shapes->push_back(new Rectangle("4", 3, 3, "red"));
+        shapes.clear();
+        shapes.push_back(compoundShape_1);
+        shapes.push_back(new Ellipse("3", 4, 3, "red"));
+        shapes.push_back(new Rectangle("4", 3, 3, "red"));
         compoundShape_0 = new CompoundShape("0", shapes);
         // compoundShape struct：
         /* 
@@ -39,12 +39,11 @@ protected:
     
     void TearDown() override {
         delete compoundShape_0;
-        delete shapes;
     }
 
     Shape * compoundShape_0;
     Shape * compoundShape_1;
-    std::list<Shape*> * shapes;
+    std::list<Shape*> shapes;
     std::vector<TwoDimensionalCoordinate*> triangleVector;
 };
 
