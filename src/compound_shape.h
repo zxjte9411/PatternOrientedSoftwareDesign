@@ -73,18 +73,16 @@ public:
     }
     
     void deleteShapeById(std::string id) {
-        std::list<Shape*>::iterator sptr = _shapes->begin();
-        for (; sptr!=_shapes->end(); sptr++) {
+        Iterator * it = createIterator();
+        for (; !it->isDone(); it->next()) {
             try
             {
-                if (id == (*sptr)->id()){
-                    sptr = _shapes->erase(sptr);
+                if (id == it->currentItem()->id()) {
+                    _shapes->remove(it->currentItem());
                     return;
                 }
-                else if ((*sptr)->color() == "transparent") {
-                    (*sptr)->deleteShapeById(id);
-                    return;
-                }
+                it->currentItem()->deleteShapeById(id);
+                return;
             }
             catch(std::string e){} //先接起來等到真的都沒有，回圈結束後就會擲出例外
         }
