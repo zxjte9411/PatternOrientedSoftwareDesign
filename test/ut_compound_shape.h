@@ -6,6 +6,7 @@
 #include "../src/shape.h"
 #include "../src/two_dimensional_coordinate.h"
 #include "../src/sort.h"
+
 #include <gtest/gtest.h>
 #include <vector>
 #include <list>

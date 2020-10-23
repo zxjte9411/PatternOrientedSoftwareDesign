@@ -6,6 +6,7 @@
 #include "../src/rectangle.h"
 #include "../src/triangle.h"
 #include "../src/ellipse.h"
+
 #include <gtest/gtest.h>
 
 class IteratorTesting : public ::testing::Test {
