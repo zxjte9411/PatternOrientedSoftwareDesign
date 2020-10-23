@@ -24,11 +24,9 @@ public:
     }
 
     void next() {
-        if (_currentItem != _end) {
-            ++_currentItem;
-            return;
-        }
-        throw std::string("Moving past the end!");
+        if (isDone())
+            throw std::string("Moving past the end!");
+        _currentItem++;
         // move iterator to next position,
         // throw std::string "Moving past the end!" when iterator move over the range of the structure.
     }
