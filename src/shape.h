@@ -2,6 +2,7 @@
 #define SHAPE
 
 #include "iterator.h"
+
 #include <string>
 
 class Shape {

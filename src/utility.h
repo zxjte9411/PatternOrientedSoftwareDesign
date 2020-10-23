@@ -1,5 +1,6 @@
 #ifndef UTILITY_H
 #define UTILITY_H
+
 #include "shape.h"
 #include "rectangle.h"
 #include "ellipse.h"

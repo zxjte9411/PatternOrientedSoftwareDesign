@@ -1,5 +1,6 @@
-#include <gtest/gtest.h>
 #include "../src/terminal.h"
+
+#include <gtest/gtest.h>
 
 class TerminnalTesting : public ::testing::Test {
 protected:

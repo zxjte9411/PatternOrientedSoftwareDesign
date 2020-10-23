@@ -1,6 +1,7 @@
+#include "../src/rectangle.h"
+
 #include <gtest/gtest.h>
 
-#include "../src/rectangle.h"
 #define ABS_ERROR 0.001
 
 class RectangleTesting : public ::testing::Test {

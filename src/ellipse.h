@@ -1,5 +1,6 @@
 #ifndef ELLIPSE
 #define ELLIPSE
+
 #include "shape.h"
 
 #include <stdio.h>

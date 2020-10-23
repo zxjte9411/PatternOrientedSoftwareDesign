@@ -1,11 +1,13 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
+
 #include "rectangle.h"
 #include "triangle.h"
 #include "ellipse.h"
 #include "shape.h"
 #include "two_dimensional_coordinate.h"
 #include "sort.h"
+
 #include <string>
 #include <regex>
 #include <sstream>

@@ -1,11 +1,8 @@
-#include "shape.h"
-
 #ifndef SORT
 #define SORT
-/*
-    Ascending 升冪
-    Descending 降冪
-*/
+
+#include "shape.h"
+
 bool areaAscendingCompare(Shape *a, Shape *b) {
     return a->area() < b->area();
 };

@@ -1,3 +1,9 @@
+#ifndef TRIANGLE
+#define TRIANGLE
+
+#include "shape.h"
+#include "two_dimensional_coordinate.h"
+
 #include <stdio.h>
 #include <vector>
 #include <string>
@@ -5,11 +11,6 @@
 #include <iostream>
 #include <sstream>
 
-#include "shape.h"
-#include "two_dimensional_coordinate.h"
-
-#ifndef TRIANGLE
-#define TRIANGLE
 class Triangle: public Shape {
 private:
     double _sideA, _sideB, _sideC;

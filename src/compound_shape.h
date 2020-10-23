@@ -1,8 +1,10 @@
 #ifndef COMPOUND_SHAPE_H
 #define COMPOUND_SHAPE_H
+
 #include "shape.h"
 #include "iterator.h"
 #include "shape_iterator.h"
+
 #include <vector>
 #include <sstream>
 #include <list>

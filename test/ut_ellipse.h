@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "../src/ellipse.h"
+
+#include <gtest/gtest.h>
 
 #define ABS_ERROR 0.001
 

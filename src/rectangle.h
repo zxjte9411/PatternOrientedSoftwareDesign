@@ -1,11 +1,12 @@
+#ifndef RECTANGLE
+#define RECTANGLE
+
+#include "shape.h"
+
 #include <stdio.h>
 #include <math.h>
 #include <string>
 
-#include "shape.h"
-
-#ifndef RECTANGLE
-#define RECTANGLE
 class Rectangle: public Shape {
 private:
     double _length, _width;

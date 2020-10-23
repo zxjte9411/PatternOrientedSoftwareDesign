@@ -1,7 +1,5 @@
 #include "../src/utility.h"
 #include "../src/iterator.h"
-// #include "../src/null_iterator.h"
-// #include "../src/shape_iterator.h"
 #include "../src/compound_shape.h"
 #include "../src/two_dimensional_coordinate.h"
 #include "../src/rectangle.h"

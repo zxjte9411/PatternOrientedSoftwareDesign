@@ -1,7 +1,7 @@
-#include <gtest/gtest.h>
-
 #include "../src/two_dimensional_coordinate.h"
 #include "../src/triangle.h"
+
+#include <gtest/gtest.h>
 
 #define ABS_ERROR 0.001
 
