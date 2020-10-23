@@ -1,7 +1,9 @@
-#include <string>
-
 #ifndef SHAPE
 #define SHAPE
+
+#include "iterator.h"
+#include <string>
+
 class Shape {
 private:
     std::string _id;
@@ -25,6 +27,7 @@ public:
     virtual double perimeter() const = 0;
     virtual std::string info() const = 0;
     virtual std::string type() const = 0;
+    virtual Iterator* createIterator() const;
     virtual ~Shape() {};
 };
 #endif

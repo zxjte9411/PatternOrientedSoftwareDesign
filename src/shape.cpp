@@ -1,4 +1,5 @@
-#include "shape.h"
+#include "null_iterator.h"
+
 #include <string>
 
 Shape::Shape(std::string id): _id(id), _color("white"){} // interface for default color "white".
@@ -23,3 +24,7 @@ void Shape::deleteShapeById(std::string id) {
 Shape* Shape::getShapeById(std::string id) {
     throw std::string("Only compound shape can get shape!");
 } // throw std::string "Only compound shape can get shape!"
+
+Iterator* Shape::createIterator() const {
+    return new NullIterator();
+}
