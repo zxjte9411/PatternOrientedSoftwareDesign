@@ -21,10 +21,12 @@ void Shape::deleteShapeById(std::string id) {
     throw std::string("Only compound shape can delete shape!");
 } // throw std::string "Only compound shape can delete shape!"
 
-Shape* Shape::getShapeById(std::string id) {
+Shape* Shape::getShapeById(std::string id) const {
     throw std::string("Only compound shape can get shape!");
 } // throw std::string "Only compound shape can get shape!"
 
 Iterator* Shape::createIterator() const {
     return new NullIterator();
 }
+
+Shape::~Shape() {};

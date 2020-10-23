@@ -94,7 +94,7 @@ public:
         // if no match of id, throw std::string "Expected delete shape but shape not found"
     }
     
-    Shape* getShapeById(std::string id) {
+    Shape* getShapeById(std::string id) const {
         Iterator * it = createIterator();
         for (; !it->isDone(); it->next()) {
             try
