@@ -99,3 +99,31 @@ TEST_F(IteratorTesting, currentItem) {
     it = shapes->end();
     EXPECT_EQ(*it, sit->currentItem());
 }
+
+TEST_F(IteratorTesting, nullIteratorExceptions) {
+    Iterator * nit = new NullIterator();
+    try
+    {
+        nit->first();
+    }
+    catch(std::string e)
+    {
+        EXPECT_EQ("No child member!", e);
+    }
+    try
+    {
+        nit->currentItem();
+    }
+    catch(std::string e)
+    {
+        EXPECT_EQ("No child member!", e);
+    }
+    try
+    {
+        nit->next();
+    }
+    catch(std::string e)
+    {
+        EXPECT_EQ("No child member!", e);
+    }
+}
