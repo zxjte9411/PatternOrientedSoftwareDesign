@@ -125,4 +125,12 @@ TEST_F(CompoundShapeTesting, deleteById) {
     std::string const answer = "Compound Shape {Ellipse (5.000, 4.000), Compound Shape {Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Rectangle (2.000, 2.000)}}";
     ASSERT_EQ(answer, cs->info());
     ASSERT_TRUE(cs->getShapeById("20201010") == compoundShape);
+    try
+    {
+        cs->deleteShapeById("-1");
+    }
+    catch(std::string e)
+    {
+        ASSERT_EQ("Expected delete shape but shape not found", e);
+    }
 }
