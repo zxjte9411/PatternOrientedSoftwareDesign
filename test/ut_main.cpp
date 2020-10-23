@@ -5,6 +5,7 @@
 #include "ut_sort.h"
 #include "ut_terminal.h"
 #include "ut_compound_shape.h"
+#include "ut_iterator.h"
 
 int main(int argc, char ** argv)
 {

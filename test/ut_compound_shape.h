@@ -1,3 +1,4 @@
+#include "../src/null_iterator.h"
 #include "../src/compound_shape.h"
 #include "../src/rectangle.h"
 #include "../src/triangle.h"
@@ -149,3 +150,15 @@ TEST_F(CompoundShapeTesting, shapeType) {
     ASSERT_EQ("Compound Shape", compoundShape->type());
 }
 
+TEST_F(CompoundShapeTesting, createIterator) {
+    std::list<Shape*>::iterator it = shapes->begin();
+    shapes->push_back(new Ellipse("3", 4, 3, "blue"));
+    ASSERT_TRUE((*it)->createIterator()->isDone());
+    it++;
+    ASSERT_TRUE((*it)->createIterator()->isDone());
+    it++;
+    ASSERT_TRUE((*it)->createIterator()->isDone());
+    it++;
+    ASSERT_TRUE((*it)->createIterator()->isDone());
+    // ASSERT_FALSE(compoundShape->createIterator()->isDone());
+}

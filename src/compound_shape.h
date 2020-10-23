@@ -1,6 +1,8 @@
 #ifndef COMPOUND_SHAPE_H
 #define COMPOUND_SHAPE_H
-#include "../src/shape.h"
+#include "shape.h"
+#include "iterator.h"
+#include "shape_iterator.h"
 #include <vector>
 #include <sstream>
 #include <list>
@@ -25,6 +27,10 @@ public:
         // should throw std::string "This is not a compound shape!"
         
         // throw std::string("This is not a compound shape!");
+    }
+
+    Iterator* createIterator() const {
+        return new ShapeIterator<std::list<Shape*>::iterator>(_shapes->begin(), _shapes->end());
     }
 
     double area() const {
