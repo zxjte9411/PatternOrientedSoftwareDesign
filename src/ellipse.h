@@ -50,6 +50,9 @@ public:
         sprintf(buffer, "Ellipse (%.3f, %.3f)", newSemiMajorAxes, newSemiMinorAxes);
         return buffer;
     }
-    
+
+    std::string type() const {
+        return "Ellipse";
+    }
 };
 #endif

@@ -134,3 +134,17 @@ TEST_F(CompoundShapeTesting, deleteById) {
         ASSERT_EQ("Expected delete shape but shape not found", e);
     }
 }
+
+TEST_F(CompoundShapeTesting, shapeType) {
+    std::list<Shape*>::iterator it = shapes->begin();
+    shapes->push_back(new Ellipse("3", 4, 3, "blue"));
+    ASSERT_EQ("Rectangle", (*it)->type());
+    it++;
+    ASSERT_EQ("Triangle", (*it)->type());
+    it++;
+    ASSERT_EQ("Rectangle", (*it)->type());
+    it++;
+    ASSERT_EQ("Ellipse", (*it)->type());
+    ASSERT_EQ("Compound Shape", compoundShape->type());
+}
+

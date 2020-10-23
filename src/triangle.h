@@ -67,6 +67,10 @@ public:
         // return the info of the Triangle.
         // ex. Triangle ([0.000, 0.000], [0.000, -3.141], [-4.000, 0.000])
     }
+    
+    std::string type() const {
+        return "Triangle";
+    }
 
     ~Triangle() {
         for (std::vector<TwoDimensionalCoordinate*>::iterator p=_vectors.begin(); p<_vectors.end(); p++)

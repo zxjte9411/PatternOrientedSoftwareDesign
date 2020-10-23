@@ -49,5 +49,9 @@ public:
         // return the info of the Rectangle.
         // ex. Rectangle (3.712, 4.000)
     }
+
+    std::string type() const {
+        return "Rectangle";
+    }
 };
 #endif
