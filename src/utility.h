@@ -18,13 +18,25 @@ Shape* getShapeById(Shape* shape, std::string id) {
         throw std::string("Only compound shape can get shape!");
     }
 
-    try
-    {
-        return shape->getShapeById(id);
+    for (; !shapeIterator->isDone(); shapeIterator->next()) {
+        try
+        {
+            if (id == shapeIterator->currentItem()->id()){
+                return shapeIterator->currentItem();
+            }
+            return shapeIterator->currentItem()->getShapeById(id);
+        }
+        catch(std::string e){} //先接起來等到真的都沒有，回圈結束後就會擲出例外
     }
-    catch(std::string e) {
-        throw std::string("Expected get shape but shape not found");
-    }
+    throw std::string("Expected get shape but shape not found");
+
+    // try
+    // {
+    //     return shape->getShapeById(id);
+    // }
+    // catch(std::string e) {
+    //     throw std::string("Expected get shape but shape not found");
+    // }
     // access the shape with iterator pattern.
     // DO NOT use Type Checking or Dynamic Type that would violate OCP to implement the function.
     // return a shape under the input shape tree sturcture that matches the id.
