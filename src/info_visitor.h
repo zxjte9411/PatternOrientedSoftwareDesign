@@ -44,7 +44,7 @@ public:
 
     void visit(Rectangle* rectangle) {
         char buffer[50];
-        sprintf(buffer, "Rectangle (%.3f, %.3f)", rectangle->getLength(), rectangle->getLength());
+        sprintf(buffer, "Rectangle (%.3f, %.3f)", rectangle->getLength(), rectangle->getWidth());
         _info = buffer;
         // create info of rectangle, same way as rectangle->info().
         // DO NOT use rectangle->info() to get info directly.
