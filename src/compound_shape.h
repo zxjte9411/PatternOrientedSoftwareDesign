@@ -1,6 +1,7 @@
 #ifndef COMPOUND_SHAPE_H
 #define COMPOUND_SHAPE_H
 
+#include "visitor.h"
 #include "shape.h"
 #include "iterator.h"
 #include "shape_iterator.h"
@@ -114,6 +115,10 @@ public:
 
     std::string type() const {
         return "Compound Shape";
+    }
+
+    void accept(Visitor* visitor) {
+        visitor->visit(this);
     }
 
     ~CompoundShape() {

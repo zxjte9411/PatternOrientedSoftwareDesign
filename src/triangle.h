@@ -1,6 +1,7 @@
 #ifndef TRIANGLE
 #define TRIANGLE
 
+#include "visitor.h"
 #include "shape.h"
 #include "two_dimensional_coordinate.h"
 
@@ -71,6 +72,22 @@ public:
     
     std::string type() const {
         return "Triangle";
+    }
+
+    double getSideA() const {
+        return _sideA;
+    }
+
+    double getSideB() const {
+        return _sideB;
+    }
+
+    double getSideC() const {
+        return _sideC;
+    }
+
+    void accept(Visitor* visitor) {
+        visitor->visit(this);
     }
 
     ~Triangle() {

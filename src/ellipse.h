@@ -1,6 +1,7 @@
 #ifndef ELLIPSE
 #define ELLIPSE
 
+#include "visitor.h"
 #include "shape.h"
 
 #include <stdio.h>
@@ -54,6 +55,15 @@ public:
 
     std::string type() const {
         return "Ellipse";
+    }
+    double getSemiMajorAxes() const {
+        return _semiMajorAxes;
+    }
+    double getSemiMinorAxes() const {
+        return _semiMinorAxes;
+    }
+    void accept(Visitor* visitor) {
+        visitor->visit(this);
     }
 };
 #endif

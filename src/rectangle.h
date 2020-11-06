@@ -1,6 +1,7 @@
 #ifndef RECTANGLE
 #define RECTANGLE
 
+#include "visitor.h"
 #include "shape.h"
 
 #include <stdio.h>
@@ -53,6 +54,17 @@ public:
 
     std::string type() const {
         return "Rectangle";
+    }
+
+    double getLength() const {
+        return _length;
+    }
+    double getWidth() const {
+        return _width;
+    }
+
+    void accept(Visitor* visitor) {
+        visitor->visit(this);
     }
 };
 #endif

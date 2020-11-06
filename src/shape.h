@@ -1,6 +1,7 @@
 #ifndef SHAPE
 #define SHAPE
 
+#include "visitor.h"
 #include "iterator.h"
 
 #include <string>
@@ -34,6 +35,8 @@ public:
     virtual Shape* getShapeById(std::string id) const; // throw std::string "Only compound shape can get shape!"
     
     virtual Iterator* createIterator() const; // throw std::string "Only compound shape can delete shape!"
+
+    virtual void accept(Visitor* visitor) = 0;
 
     virtual ~Shape();
 };
