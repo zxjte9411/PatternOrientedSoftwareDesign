@@ -86,6 +86,10 @@ public:
         return _sideC;
     }
 
+    std::vector<TwoDimensionalCoordinate*> getTwoDimensionalCoordinate() {
+        return _vectors;
+    }
+
     void accept(Visitor* visitor) {
         visitor->visit(this);
     }

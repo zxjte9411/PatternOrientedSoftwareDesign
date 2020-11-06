@@ -62,11 +62,10 @@ public:
         std::list<Shape*>::const_iterator sptr = _shapes.begin();
         std::string result = "Compound Shape {";
         for (;sptr!=_shapes.end();sptr++) {
-            if (std::distance(sptr, _shapes.end()) == 1)
-                result += (*sptr)->info() + "}";
-            else
-                result += (*sptr)->info() + ", ";
+            result += (*sptr)->info() + ", ";
         }
+        std::string key = ", ";
+        result.replace(result.rfind(key), key.length(), "}");
         return result;
     }
     

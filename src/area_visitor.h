@@ -5,6 +5,7 @@
 #include "rectangle.h"
 #include "triangle.h"
 #include "ellipse.h"
+#include "iterator.h"
 #include "visitor.h"
 
 #include <math.h>
@@ -24,7 +25,6 @@ public:
         double sideA = triangle->getSideA();
         double sideB = triangle->getSideB();
         double sideC = triangle->getSideC();
-
         double s = (sideA + sideB + sideC) / 2.0;
         _area = sqrt(s * (s-sideA) * (s-sideB) * (s-sideC));
         // caculate the area of Triangle.

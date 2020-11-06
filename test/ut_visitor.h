@@ -78,3 +78,29 @@ TEST_F(VisitorTesting, getCompoundShapeArea) {
     compoundShape_0->accept(v);
     EXPECT_NEAR(52.700, dynamic_cast<AreaVisitor*>(v)->area(), 0.001);
 }
+
+TEST_F(VisitorTesting, getRectangleInfo) {
+    Visitor * v = new InfoVisitor();
+    r33->accept(v);
+    ASSERT_EQ("Rectangle (3.000, 3.000)", dynamic_cast<InfoVisitor*>(v)->info());
+}
+
+TEST_F(VisitorTesting, getTriangleInfo) {
+    Visitor * v = new InfoVisitor();
+    t345->accept(v);
+    ASSERT_EQ("Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])", dynamic_cast<InfoVisitor*>(v)->info());
+}
+
+TEST_F(VisitorTesting, getEllipseInfo) {
+    Visitor * v = new InfoVisitor();
+    e43->accept(v);
+    ASSERT_EQ("Ellipse (4.000, 3.000)", dynamic_cast<InfoVisitor*>(v)->info());
+}
+
+TEST_F(VisitorTesting, getCompoundShapeInfo) {
+    Visitor * v = new InfoVisitor();
+    compoundShape_0->accept(v);
+    std::string const answer = "Compound Shape {Compound Shape {Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])}, Ellipse (4.000, 3.000), Rectangle (3.000, 3.000)}";
+
+    EXPECT_EQ(answer, dynamic_cast<InfoVisitor*>(v)->info());
+}
