@@ -6,6 +6,7 @@
 #include "ut_compound_shape.h"
 #include "ut_iterator.h"
 #include "ut_utility.h"
+#include "ut_visitor.h"
 
 #include <gtest/gtest.h>
 
