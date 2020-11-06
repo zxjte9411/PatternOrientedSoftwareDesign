@@ -86,7 +86,7 @@ public:
         return _sideC;
     }
 
-    std::vector<TwoDimensionalCoordinate*> getTwoDimensionalCoordinate() {
+    std::vector<TwoDimensionalCoordinate*> getTwoDimensionalCoordinate() const {
         return _vectors;
     }
 
