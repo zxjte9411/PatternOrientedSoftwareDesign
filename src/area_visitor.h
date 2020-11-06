@@ -40,6 +40,7 @@ public:
     }
 
     void visit(CompoundShape* compoundShape) {
+        _area = 0;
         Iterator * it = compoundShape->createIterator();
         Visitor * v = new AreaVisitor();
         for (;!it->isDone(); it->next()) {

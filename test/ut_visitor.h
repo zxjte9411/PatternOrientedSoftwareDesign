@@ -70,13 +70,43 @@ TEST_F(VisitorTesting, getTriangleArea) {
 TEST_F(VisitorTesting, getEllipseArea) {
     Visitor * v = new AreaVisitor();
     e43->accept(v);
-    ASSERT_NEAR(37.700, dynamic_cast<AreaVisitor*>(v)->area(), 0.001);
+    ASSERT_NEAR(37.699, dynamic_cast<AreaVisitor*>(v)->area(), 0.001);
 }
 
 TEST_F(VisitorTesting, getCompoundShapeArea) {
     Visitor * v = new AreaVisitor();
     compoundShape_0->accept(v);
     EXPECT_NEAR(52.700, dynamic_cast<AreaVisitor*>(v)->area(), 0.001);
+}
+
+TEST_F(VisitorTesting, getCompoundShapeAreaLevel3) {
+    // compoundShape struct：
+    /* 
+        CompoundShape(id:0)//99.398
+        │
+        ├── CompoundShape(id:1)//52.699
+        │    │
+        │    ├── Triangle(id:2)//6.000
+        │    │
+        │    └── CompoundShape(id:5)//46.699
+        │         │
+        │         ├── Ellipse(id:6)//37.699
+        │         │
+        │         └── Rectangle(id:7)//9.000
+        │        
+        ├── Ellipse(id:3)//37.699
+        │
+        └── Rectangle(id:4)//9.000
+    */
+    std::list<Shape*> _shapes = std::list<Shape*>();
+    _shapes.push_back(new Ellipse("6", 4, 3, "red"));//37.000
+    _shapes.push_back(new Rectangle("7", 3, 3, "red"));//9.000
+    Shape * compoundShape_2 = new CompoundShape("5", _shapes);//
+    compoundShape_1->addShape(compoundShape_2);
+
+    Visitor * v = new AreaVisitor();
+    compoundShape_0->accept(v);
+    EXPECT_NEAR(99.398, dynamic_cast<AreaVisitor*>(v)->area(), 0.001);
 }
 
 TEST_F(VisitorTesting, getRectangleInfo) {
@@ -116,16 +146,16 @@ TEST_F(VisitorTesting, getCompoundShapeInfoLevel3) {
         │    │
         │    └── CompoundShape(id:5) 
         │         │
-        │         ├── Ellipse(id:3)
+        │         ├── Ellipse(id:6)
         │         │
-        │         └── Rectangle(id:4)
+        │         └── Rectangle(id:7)
         ├── Ellipse(id:3)
         │
         └── Rectangle(id:4)
     */
     std::list<Shape*> _shapes = std::list<Shape*>();
-    _shapes.push_back(new Ellipse("3", 4, 3, "red"));
-    _shapes.push_back(new Rectangle("4", 3, 3, "red"));
+    _shapes.push_back(new Ellipse("6", 4, 3, "red"));
+    _shapes.push_back(new Rectangle("7", 3, 3, "red"));
     Shape * compoundShape_2 = new CompoundShape("5", _shapes);
     compoundShape_1->addShape(compoundShape_2);
 
