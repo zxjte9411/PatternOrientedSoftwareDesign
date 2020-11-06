@@ -55,7 +55,7 @@ public:
         Iterator * it = compoundShape->createIterator();
         Visitor * v = new InfoVisitor();
         std::stringstream ss;
-        _info += "Compound Shape {";
+        _info = "Compound Shape {";
         for (; !it->isDone(); it->next()) {
             it->currentItem()->accept(v);
             ss << dynamic_cast<InfoVisitor*>(v)->info() << ", ";

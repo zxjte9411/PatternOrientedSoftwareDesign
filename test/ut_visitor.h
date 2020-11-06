@@ -104,3 +104,34 @@ TEST_F(VisitorTesting, getCompoundShapeInfo) {
 
     EXPECT_EQ(answer, dynamic_cast<InfoVisitor*>(v)->info());
 }
+
+TEST_F(VisitorTesting, getCompoundShapeInfoLevel3) {
+    // compoundShape struct：
+    /* 
+        CompoundShape(id:0) 
+        │
+        ├── CompoundShape(id:1)
+        │    │
+        │    ├── Triangle(id:2) 
+        │    │
+        │    └── CompoundShape(id:5) 
+        │         │
+        │         ├── Ellipse(id:3)
+        │         │
+        │         └── Rectangle(id:4)
+        ├── Ellipse(id:3)
+        │
+        └── Rectangle(id:4)
+    */
+    std::list<Shape*> _shapes = std::list<Shape*>();
+    _shapes.push_back(new Ellipse("3", 4, 3, "red"));
+    _shapes.push_back(new Rectangle("4", 3, 3, "red"));
+    Shape * compoundShape_2 = new CompoundShape("5", _shapes);
+    compoundShape_1->addShape(compoundShape_2);
+
+    Visitor * v = new InfoVisitor();
+    compoundShape_0->accept(v);
+    std::string const answer = "Compound Shape {Compound Shape {Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000]), Compound Shape {Ellipse (4.000, 3.000), Rectangle (3.000, 3.000)}}, Ellipse (4.000, 3.000), Rectangle (3.000, 3.000)}";
+
+    EXPECT_EQ(answer, dynamic_cast<InfoVisitor*>(v)->info());
+}
