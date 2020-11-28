@@ -20,7 +20,7 @@ private:
     }
 public:
     CompoundShape(std::string id, std::list<Shape*> shapes): Shape(id, "transparent") {
-        createChecker(shapes);
+        //createChecker(shapes);
         _shapes = std::list<Shape*>();
         std::list<Shape*>::iterator sptr = shapes.begin();
         for (;sptr!=shapes.end();sptr++)

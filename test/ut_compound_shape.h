@@ -44,15 +44,7 @@ TEST_F(CompoundShapeTesting, createCompoundShape) {
     ASSERT_EQ("20201010", compoundShape->id());
     //-----------------------------------------------
     std::list<Shape*> _shapes = std::list<Shape*>();
-    try
-    {
-        CompoundShape compoundShape("99", _shapes);
-        FAIL();
-    }
-    catch(std::string e)
-    {
-        ASSERT_EQ("This is not a compound shape!", e);
-    }    
+    ASSERT_NO_THROW(CompoundShape compoundShape("99", _shapes));
 }
 
 TEST_F(CompoundShapeTesting, getArea) {
