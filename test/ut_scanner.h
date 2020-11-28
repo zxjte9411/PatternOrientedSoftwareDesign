@@ -1,4 +1,3 @@
-
 #include "../src/scanner.h"
 
 #include <ctype.h>
