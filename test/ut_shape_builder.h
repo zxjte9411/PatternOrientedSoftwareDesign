@@ -56,13 +56,17 @@ TEST(ShapeBuilderTest, buildompoundShape){
 
 TEST(ShapeBuilderTest, buildEmptyCompoundShape){
     ShapeBuilder * sb = new ShapeBuilder();
-    sb->buildCompoundShapeBegin();
-    sb->buildCompoundShapeBegin();
-    sb->buildCompoundShapeEnd();
     sb->buildTriangle(0, 0, 0, -3, -4, 0);
+    sb->buildCompoundShapeBegin();
+    
+    sb->buildCompoundShapeBegin();
+    
     sb->buildCompoundShapeEnd();
+    sb->buildCompoundShapeEnd();
+    
+    sb->buildTriangle(0, 0, 0, -3, -4, 0);
     std::deque<Shape *> result = sb->getResult();
-    ASSERT_EQ(1, result.size());
+    ASSERT_EQ(3, result.size());
     // ASSERT_EQ(0, result[0]->area());
 }
 
