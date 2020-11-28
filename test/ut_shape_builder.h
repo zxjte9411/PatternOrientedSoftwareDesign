@@ -43,7 +43,7 @@ TEST_F(ShapeBuilderTesting, buildEllipse) {
     ASSERT_EQ("Ellipse (5.000, 4.000)", results[0]->info());
 }
 
-TEST(ShapeBuilderTest, buildompoundShape){
+TEST_F(ShapeBuilderTesting, buildompoundShape){
     ShapeBuilder * sb = new ShapeBuilder();
     sb->buildCompoundShapeBegin();
     sb->buildRectangle(2, 2);
@@ -54,14 +54,18 @@ TEST(ShapeBuilderTest, buildompoundShape){
     ASSERT_EQ(10,result[0]->area());
 }
 
-TEST(ShapeBuilderTest, buildEmptyCompoundShape){
+TEST_F(ShapeBuilderTesting, buildEmptyCompoundShape){
     ShapeBuilder * sb = new ShapeBuilder();
     sb->buildTriangle(0, 0, 0, -3, -4, 0);
     sb->buildCompoundShapeBegin();
     
     sb->buildCompoundShapeBegin();
+    sb->buildCompoundShapeBegin();
     
     sb->buildCompoundShapeEnd();
+    sb->buildCompoundShapeEnd();
+    
+    sb->buildTriangle(0, 0, 0, -3, -4, 0);
     sb->buildCompoundShapeEnd();
     
     sb->buildTriangle(0, 0, 0, -3, -4, 0);
@@ -70,7 +74,7 @@ TEST(ShapeBuilderTest, buildEmptyCompoundShape){
     // ASSERT_EQ(0, result[0]->area());
 }
 
-TEST(ShapeBuilderTest, buildForest){
+TEST_F(ShapeBuilderTesting, buildForest){
     ShapeBuilder * sb = new ShapeBuilder();
     sb->buildRectangle(5, 5);
     sb->buildCompoundShapeBegin();

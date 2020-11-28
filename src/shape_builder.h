@@ -13,8 +13,6 @@
 #include <string>
 #include <deque>
 #include <stack>
-#include <cstdlib>
-#include <ctime>
 
 class ShapeBuilder {
 private:
@@ -28,13 +26,13 @@ public:
     }
     
     void buildRectangle(double length, double width) {
-        Shape * r = new Rectangle(std::to_string(rand()), length, width);
+        Shape * r = new Rectangle(std::to_string(_id++), length, width);
         _pushdown.push(r);
         // build a rectangle with an unique id and push in a std::stack.
     }
     
     void buildEllipse(double semiMajorAxes, double semiMinorAxes) {
-        Shape * e = new Ellipse(std::to_string(rand()), semiMajorAxes, semiMinorAxes);
+        Shape * e = new Ellipse(std::to_string(_id++), semiMajorAxes, semiMinorAxes);
         _pushdown.push(e);
         // build a ellipse with an unique id and push in a std::stack.
     }
@@ -44,7 +42,7 @@ public:
         coordinates.push_back(new TwoDimensionalCoordinate(x1, y1));
         coordinates.push_back(new TwoDimensionalCoordinate(x2, y2));
         coordinates.push_back(new TwoDimensionalCoordinate(x3, y3));
-        Shape *t = new Triangle(std::to_string(rand()), coordinates);
+        Shape *t = new Triangle(std::to_string(_id++), coordinates);
         _pushdown.push(t);
         // build a triangle with an unique id and push in a std::stack.
     }
@@ -60,8 +58,6 @@ public:
     void buildCompoundShapeEnd() {
         std::vector<Shape *> v;
         while(std::stoi(_pushdown.top()->id()) != _idToCompoundShape.top()) {
-        // while(!dynamic_cast<CompoundShape*>(_pushdown.top()) ||
-        //     (dynamic_cast<CompoundShape*>(_pushdown.top()) && !_pushdown.top()->createIterator()->isDone())){
             v.push_back(_pushdown.top());
             _pushdown.pop();
         }
