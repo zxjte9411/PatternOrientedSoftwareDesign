@@ -54,7 +54,19 @@ TEST(ShapeBuilderTest, buildompoundShape){
     ASSERT_EQ(10,result[0]->area());
 }
 
-TEST(ShapeBuilderTest, BuildForest){
+TEST(ShapeBuilderTest, buildEmptyCompoundShape){
+    ShapeBuilder * sb = new ShapeBuilder();
+    sb->buildCompoundShapeBegin();
+    sb->buildCompoundShapeBegin();
+    sb->buildCompoundShapeEnd();
+    sb->buildTriangle(0, 0, 0, -3, -4, 0);
+    sb->buildCompoundShapeEnd();
+    std::deque<Shape *> result = sb->getResult();
+    ASSERT_EQ(1, result.size());
+    // ASSERT_EQ(0, result[0]->area());
+}
+
+TEST(ShapeBuilderTest, buildForest){
     ShapeBuilder * sb = new ShapeBuilder();
     sb->buildRectangle(5, 5);
     sb->buildCompoundShapeBegin();

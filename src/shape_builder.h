@@ -19,8 +19,11 @@
 class ShapeBuilder {
 private:
     std::stack<Shape *> _pushdown;
+    std::stack<int> _idToCompoundShape;
+    int _id;
 public:
     ShapeBuilder() {
+        _id = 0;
         srand(time(NULL));
     }
     
@@ -47,18 +50,22 @@ public:
     }
     
     void buildCompoundShapeBegin() {
-        Shape * cs = new CompoundShape(std::to_string(rand()), std::list<Shape*>());
-        _pushdown.push(cs); 
+        Shape * cs = new CompoundShape(std::to_string(_id), std::list<Shape*>());
+        _pushdown.push(cs);
+        _idToCompoundShape.push(_id);
+        _id++;
         // for notifing beginning of a Compound Shape.
     }
     
     void buildCompoundShapeEnd() {
         std::vector<Shape *> v;
-        while(!dynamic_cast<CompoundShape*>(_pushdown.top()) ||
-            (dynamic_cast<CompoundShape*>(_pushdown.top()) && !_pushdown.top()->createIterator()->isDone())){
+        while(std::stoi(_pushdown.top()->id()) != _idToCompoundShape.top()) {
+        // while(!dynamic_cast<CompoundShape*>(_pushdown.top()) ||
+        //     (dynamic_cast<CompoundShape*>(_pushdown.top()) && !_pushdown.top()->createIterator()->isDone())){
             v.push_back(_pushdown.top());
             _pushdown.pop();
         }
+        _idToCompoundShape.pop();
         for(auto it=v.rbegin(); it!=v.rend(); it++){
             _pushdown.top()->addShape(*it);
         }
