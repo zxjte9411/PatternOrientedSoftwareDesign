@@ -61,6 +61,11 @@ public:
         // ex."Compound Shape {Ellipse (4.000, 3.000), Rectangle (3.000, 4.000), Triangle ([0.000, 0.000], [3.000, 0.000], [0.000, 4.000])}"
         std::list<Shape*>::const_iterator sptr = _shapes.begin();
         std::string result = "Compound Shape {";
+        if (_shapes.empty()){
+            result += "}";
+            return result;
+        }
+            
         for (;sptr!=_shapes.end();sptr++) {
             result += (*sptr)->info() + ", ";
         }
