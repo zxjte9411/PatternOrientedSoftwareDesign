@@ -5,8 +5,6 @@
 #include <string>
 #include <list>
 
-typedef std::list<std::string>::iterator StrIterator;
-
 enum status
 {
     Number,
@@ -30,7 +28,7 @@ private:
         for (char c : input) {
             _currentState = getStatus(c);
 
-            if (_beforeState != Default && _beforeState != _currentState && token != "") {
+            if (_beforeState != Default && _beforeState != _currentState && !token.empty()) {
                 _tokens.push_back(token);
                 token = "";
                 _beforeState = Default;

@@ -14,7 +14,7 @@ protected:
     }
 };
 
-TEST(ShapeParserTesting, parserRectangle) {
+TEST_F(ShapeParserTesting, parserRectangle) {
     ShapeParser sp("Rectangle (2, 2)");
     sp.parser();
     std::deque<Shape*> results = sp.getResult();
@@ -24,7 +24,7 @@ TEST(ShapeParserTesting, parserRectangle) {
     ASSERT_EQ(8.000, results[0]->perimeter());
 }
 
-TEST(ShapeParserTesting, parserEllipse) {
+TEST_F(ShapeParserTesting, parserEllipse) {
     ShapeParser sp("Ellipse (5, 4)");
     sp.parser();
     std::deque<Shape*> results = sp.getResult();
@@ -34,7 +34,7 @@ TEST(ShapeParserTesting, parserEllipse) {
     ASSERT_NEAR(29.132, results[0]->perimeter(), 0.001);
 }
 
-TEST(ShapeParserTesting, parserTriangle) {
+TEST_F(ShapeParserTesting, parserTriangle) {
     ShapeParser sp("Triangle (0.000, 0.000, 0.000, -3.000, -4.000, 0.000)");
     sp.parser();
     std::deque<Shape*> results = sp.getResult();
@@ -44,7 +44,7 @@ TEST(ShapeParserTesting, parserTriangle) {
     ASSERT_EQ(12, results[0]->perimeter());
 }
 
-TEST(ShapeParserTesting, parserCompoundShape) {
+TEST_F(ShapeParserTesting, parserCompoundShape) {
     ShapeParser sp("Ellipse (5.000, 4.000), CompoundShape {Triangle (0.000, 0.000, 0.000, -3.000, -4.000, 0.000), Ellipse (5.000, 4.000), Rectangle (2.000, 2.000), CompoundShape {Triangle (0.000, 0.000, 0.000, -3.000, -4.000, 0.000), Ellipse (5.000, 4.000), Rectangle (2.000, 2.000)}}");
     sp.parser();
     std::deque<Shape*> results = sp.getResult();
@@ -56,7 +56,7 @@ TEST(ShapeParserTesting, parserCompoundShape) {
     ASSERT_NEAR(98.265, results[1]->perimeter(), 0.001);
 }
 
-TEST(ShapeParserTesting, parser_multi_simple_shapes_with_one_shape_contain_invalid_argument_that_should_be_ignored) {
+TEST_F(ShapeParserTesting, parser_multi_simple_shapes_with_one_shape_contain_invalid_argument_that_should_be_ignored) {
 
     ShapeParser sp("Rectangle (3.000, 4.000), Ellipse (4.200, 3.700), Ellipse (4.200, 3.700, 12.502), Triangle (0.000, 0.000, 0.000, -3.000, -4.000, 0.000)");
     sp.parser();
@@ -68,4 +68,13 @@ TEST(ShapeParserTesting, parser_multi_simple_shapes_with_one_shape_contain_inval
     EXPECT_EQ("Rectangle (3.000, 4.000)", results[0]->info());
     EXPECT_EQ("Ellipse (4.200, 3.700)", results[1]->info());
     EXPECT_EQ("Triangle ([0.000, 0.000], [0.000, -3.000], [-4.000, 0.000])", results[2]->info());
+}
+
+TEST_F(ShapeParserTesting, parserCompoundShapeWithSomeSShapeIsFalse) {
+    ShapeParser sp("Ellipse (5.000, 4.000), CompoundShape {Triangl (0.000, 0.000, 0.000, -3.000, -4.000, 0.000), Ellipse (5.000, 4.000), Rectangle (2.000, 2.000), CompoundShape {Triangle (0.000, 0.000, 0.000, -3.000, -4.000, 0.000), Ellipse (5.000, 4.000), Rectangle (2.000, 2.000)}}");
+    sp.parser();
+    std::deque<Shape*> results = sp.getResult();
+    ASSERT_EQ(2, results.size());
+    std::string anwser = "Compound Shape {Ellipse (5.000, 4.000), Rectangle (2.000, 2.000), Compound Shape {Triangle ([0.000, 0.000], [0.000, -3.000], [-4.000, 0.000]), Ellipse (5.000, 4.000), Rectangle (2.000, 2.000)}}";
+    ASSERT_EQ("Ellipse (5.000, 4.000)", results[0]->info());
 }

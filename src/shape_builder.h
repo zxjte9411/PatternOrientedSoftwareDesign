@@ -57,7 +57,7 @@ public:
     
     void buildCompoundShapeEnd() {
         std::vector<Shape *> v;
-        while(std::stoi(_pushdown.top()->id()) != _idToCompoundShape.top()) {
+        while(_idToCompoundShape.size() && std::stoi(_pushdown.top()->id()) != _idToCompoundShape.top()) {
             v.push_back(_pushdown.top());
             _pushdown.pop();
         }

@@ -50,12 +50,7 @@ private:
     void buildCompoundShape() {
         if (_scanner->nextToken() == "{") {
             _shapeBuilder.buildCompoundShapeBegin();
-            try {
-                parser();
-            }
-            catch(const std::string e) {
-                _shapeBuilder.buildCompoundShapeEnd();
-            }            
+            parser();
         }
     }
 public:
